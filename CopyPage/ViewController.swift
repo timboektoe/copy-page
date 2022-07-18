@@ -7,6 +7,8 @@
 
 import UIKit
 import WebKit
+import SafariServices
+import os.log
 
 class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHandler {
 
@@ -30,5 +32,15 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         // Override point for customization.
     }
+    
+    override func beginRequest(with context: NSExtensionContext) {
+        let item = context.inputItems[0] as! NSExtensionItem
+        let message = item.userInfo?[SFExtensionMessageKey]
+        print("Received message from browser.runtime.sendNativeMessage: %@", message as! CVarArg)
 
+        let response = NSExtensionItem()
+        response.userInfo = [ SFExtensionMessageKey: [ "Response to": message ] ]
+            
+        context.completeRequest(returningItems: [response], completionHandler: nil)
+    }
 }
