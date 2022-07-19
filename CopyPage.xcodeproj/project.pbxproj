@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C098AED14D93CBF241E429D /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 1C098273488DD62674AFA731 /* .gitignore */; };
 		223D6C6B2882EC0D00C4368E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223D6C6A2882EC0D00C4368E /* AppDelegate.swift */; };
 		223D6C6F2882EC0D00C4368E /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 223D6C6D2882EC0D00C4368E /* Main.html */; };
 		223D6C712882EC0D00C4368E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 223D6C702882EC0D00C4368E /* Icon.png */; };
@@ -70,6 +71,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1C098273488DD62674AFA731 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
 		223D6C672882EC0D00C4368E /* CopyPage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CopyPage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		223D6C6A2882EC0D00C4368E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		223D6C6E2882EC0D00C4368E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = ../Base.lproj/Main.html; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				223D6C912882EC0E00C4368E /* CopyPageUITests */,
 				223D6C9E2882EC0E00C4368E /* CopyPage Extension */,
 				223D6C682882EC0D00C4368E /* Products */,
+				1C098273488DD62674AFA731 /* .gitignore */,
 			);
 			sourceTree = "<group>";
 		};
@@ -353,6 +356,7 @@
 				223D6C6F2882EC0D00C4368E /* Main.html in Resources */,
 				223D6CB32882EC0F00C4368E /* Assets.xcassets in Resources */,
 				223D6C732882EC0D00C4368E /* Style.css in Resources */,
+				1C098AED14D93CBF241E429D /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
