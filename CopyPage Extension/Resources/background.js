@@ -1,6 +1,8 @@
 browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
     console.log("Received request: ", request);
 
-    if (request.greeting === "hello")
-        sendResponse({ farewell: "goodbye" });
+    browser.runtime.sendNativeMessage("application.id", request, function(response) {
+        sendResponse(response);
+    });
+    return true;
 });

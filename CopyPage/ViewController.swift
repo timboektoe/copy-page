@@ -14,6 +14,12 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
 
     @IBOutlet var webView: WKWebView!
 
+
+    /*
+     Screen should show a button. When the use clicks the button, the app should open safari webbrowser pointing to:
+     https://acct-stubs.aqopi.com/stub.html?source=moh&profile=test&timeout=0&redirects=0&redirectTimeout=0
+     */
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

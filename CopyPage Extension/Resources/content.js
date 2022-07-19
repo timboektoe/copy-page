@@ -1,7 +1,14 @@
-browser.runtime.sendMessage({ greeting: "hello" }).then((response) => {
-    console.log("Received response: ", response);
-});
+let didIt = false;
 
-browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    console.log("Received request: ", request);
-});
+const doIt = () => {
+    if (!didIt && document.location.href.startsWith('https://acct-stubs.aqopi.com/stub.html') ) {
+        browser.runtime.sendMessage(JSON.stringify({"request": "check", "url": window.location.href})).then((response) => {
+            console.log(response);
+        });
+        didIt = true;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', doIt, false);
+
+doIt();
