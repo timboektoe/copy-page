@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D86A08A28883B9F00498CDB /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D86A08928883B9F00498CDB /* PermissionViewController.swift */; };
+		0D86A08C2888453D00498CDB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D86A08B2888453D00498CDB /* HomeViewController.swift */; };
 		1C098AED14D93CBF241E429D /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 1C098273488DD62674AFA731 /* .gitignore */; };
 		223D6C6B2882EC0D00C4368E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223D6C6A2882EC0D00C4368E /* AppDelegate.swift */; };
 		223D6C6F2882EC0D00C4368E /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 223D6C6D2882EC0D00C4368E /* Main.html */; };
@@ -71,6 +73,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D86A08928883B9F00498CDB /* PermissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
+		0D86A08B2888453D00498CDB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		0D86A08D288853F000498CDB /* CopyPage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CopyPage.entitlements; sourceTree = "<group>"; };
+		0D86A08E2888541C00498CDB /* CopyPage Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CopyPage Extension.entitlements"; sourceTree = "<group>"; };
 		1C098273488DD62674AFA731 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
 		223D6C672882EC0D00C4368E /* CopyPage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CopyPage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		223D6C6A2882EC0D00C4368E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +139,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D86A08628883B7200498CDB /* App */ = {
+			isa = PBXGroup;
+			children = (
+				223D6C6A2882EC0D00C4368E /* AppDelegate.swift */,
+				223D6C742882EC0D00C4368E /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		0D86A08828883B9000498CDB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0D86A08928883B9F00498CDB /* PermissionViewController.swift */,
+				0D86A08B2888453D00498CDB /* HomeViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		223D6C5E2882EC0D00C4368E = {
 			isa = PBXGroup;
 			children = (
@@ -159,8 +183,9 @@
 		223D6C692882EC0D00C4368E /* CopyPage */ = {
 			isa = PBXGroup;
 			children = (
-				223D6C6A2882EC0D00C4368E /* AppDelegate.swift */,
-				223D6C742882EC0D00C4368E /* SceneDelegate.swift */,
+				0D86A08D288853F000498CDB /* CopyPage.entitlements */,
+				0D86A08828883B9000498CDB /* Controllers */,
+				0D86A08628883B7200498CDB /* App */,
 				223D6C762882EC0D00C4368E /* ViewController.swift */,
 				223D6C782882EC0D00C4368E /* LaunchScreen.storyboard */,
 				223D6C7B2882EC0D00C4368E /* Main.storyboard */,
@@ -201,6 +226,7 @@
 		223D6C9E2882EC0E00C4368E /* CopyPage Extension */ = {
 			isa = PBXGroup;
 			children = (
+				0D86A08E2888541C00498CDB /* CopyPage Extension.entitlements */,
 				223D6C9F2882EC0E00C4368E /* SafariWebExtensionHandler.swift */,
 				223D6CB22882EC0F00C4368E /* Info.plist */,
 				223D6CA12882EC0E00C4368E /* Resources */,
@@ -399,6 +425,8 @@
 				223D6C772882EC0D00C4368E /* ViewController.swift in Sources */,
 				223D6C6B2882EC0D00C4368E /* AppDelegate.swift in Sources */,
 				223D6C752882EC0D00C4368E /* SceneDelegate.swift in Sources */,
+				0D86A08A28883B9F00498CDB /* PermissionViewController.swift in Sources */,
+				0D86A08C2888453D00498CDB /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,9 +620,10 @@
 		223D6CB72882EC0F00C4368E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "CopyPage Extension/CopyPage Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZSXK645D27;
+				DEVELOPMENT_TEAM = 7H2WM3JK95;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "CopyPage Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "CopyPage Extension";
@@ -610,7 +639,7 @@
 					"-framework",
 					SafariServices,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nl.iwize.CopyPage.Extension;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.iwize.CopyPage1.Extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -622,9 +651,10 @@
 		223D6CB82882EC0F00C4368E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "CopyPage Extension/CopyPage Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZSXK645D27;
+				DEVELOPMENT_TEAM = 7H2WM3JK95;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "CopyPage Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "CopyPage Extension";
@@ -640,7 +670,7 @@
 					"-framework",
 					SafariServices,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nl.iwize.CopyPage.Extension;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.iwize.CopyPage1.Extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -655,9 +685,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CopyPage/CopyPage.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZSXK645D27;
+				DEVELOPMENT_TEAM = 7H2WM3JK95;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CopyPage/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CopyPage;
@@ -678,8 +710,9 @@
 					"-framework",
 					WebKit,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nl.iwize.CopyPage;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.iwize.CopyPage1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -692,9 +725,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CopyPage/CopyPage.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZSXK645D27;
+				DEVELOPMENT_TEAM = 7H2WM3JK95;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CopyPage/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CopyPage;
@@ -715,8 +750,9 @@
 					"-framework",
 					WebKit,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nl.iwize.CopyPage;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.iwize.CopyPage1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -730,7 +766,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZSXK645D27;
+				DEVELOPMENT_TEAM = 7H2WM3JK95;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;

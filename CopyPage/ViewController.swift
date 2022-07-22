@@ -23,10 +23,10 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.webView.navigationDelegate = self
+//        self.webView.navigationDelegate = self
         self.webView.scrollView.isScrollEnabled = false
 
-        self.webView.configuration.userContentController.add(self, name: "controller")
+//        self.webView.configuration.userContentController.add(self, name: "controller")
 
         self.webView.loadFileURL(Bundle.main.url(forResource: "Main", withExtension: "html")!, allowingReadAccessTo: Bundle.main.resourceURL!)
     }
@@ -38,7 +38,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         // Override point for customization.
     }
-    
+
     override func beginRequest(with context: NSExtensionContext) {
         let item = context.inputItems[0] as! NSExtensionItem
         let message = item.userInfo?[SFExtensionMessageKey]
@@ -46,7 +46,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHan
 
         let response = NSExtensionItem()
         response.userInfo = [ SFExtensionMessageKey: [ "Response to": message ] ]
-            
+
         context.completeRequest(returningItems: [response], completionHandler: nil)
     }
 }
