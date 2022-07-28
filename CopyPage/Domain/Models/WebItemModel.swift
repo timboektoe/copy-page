@@ -11,6 +11,8 @@ import Foundation
 struct WebSiteElement: Codable {
 	let name, imageName: String
 	let url: String
+	let source: String
 }
+
 
 typealias WebSite = [WebSiteElement]

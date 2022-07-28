@@ -13,40 +13,77 @@ struct MessageModel: Codable {
 	let url: String
 }
 
+enum ExtensionMessageProcessingErros: LocalizedError {
+	case noMessage
+	case noMessageData
+	case cantCreateURL
+	case cantCreateComponents
+	case noSourceQuery
+	case cantDecodeMessage
+}
+
 class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
 
 	/// Shared container with app
-	let groupUserDefaults = UserDefaults(suiteName: "group.copypage.safariappextension")
+	let groupUserDefaults = UserDefaults(suiteName: "group.copypage.safariappextension")!
 
 	/// Receive message from background.js
     func beginRequest(with context: NSExtensionContext) {
 
         let item = context.inputItems[0] as! NSExtensionItem
         let message = item.userInfo?[SFExtensionMessageKey]
-        os_log(.default, "Received message from browser.runtime.sendNativeMessage: %@", message as! CVarArg)
-		NSLog("Message Received: %@", message as! CVarArg)
 
         let response = NSExtensionItem()
         response.userInfo = [SFExtensionMessageKey: [ "Response to": message ]]
 
 		if let message = message as? String {
 			processMessage(message: message)
+		} else {
+			saveError(error: .noMessage)
 		}
-		/// Share message with application
-//		groupUserDefaults?.set(message, forKey: "test")
-
-		// send it to the content.js 
 
         context.completeRequest(returningItems: [response], completionHandler: nil)
     }
 
+
 	func processMessage(message: String) {
 		do {
-			guard let messageData = message.data(using: .utf8) else { return }
+			guard let messageData = message.data(using: .utf8) else {
+				saveError(error: .noMessageData)
+				return
+			}
+
 			let result = try JSONDecoder().decode(MessageModel.self, from: messageData)
-			groupUserDefaults?.set(true, forKey: result.url)
+
+			guard let url = URL(string: result.url) else {
+				saveError(error: .cantCreateURL)
+				return
+			}
+
+			guard let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
+				saveError(error: .cantCreateComponents)
+				return
+			}
+
+			let sourceQuery = urlComponents.queryItems?.first {
+				$0.name == "source"
+			}
+
+			guard let sourceQueryValue = sourceQuery?.value else {
+				saveError(error: .noSourceQuery)
+				return
+			}
+
+			groupUserDefaults.set(true, forKey: sourceQueryValue)
+
 		} catch {
-			print(error.localizedDescription)
+			saveError(error: .cantDecodeMessage)
 		}
+	}
+
+	func saveError(error: ExtensionMessageProcessingErros) {
+		var errors = groupUserDefaults.array(forKey: "extensionErrors") ?? []
+		errors.append("Date: \(Date()) \n Error: \(error.localizedDescription)")
+		groupUserDefaults.set(errors, forKey: "extensionErrors")
 	}
 }

@@ -20,6 +20,7 @@ class WebNavigationViewController: UIViewController {
 		setupView()
 
 		contentView.configure(with: viewModel.uiModel)
+
 		displayPromptView()
 	}
 
@@ -39,6 +40,10 @@ class WebNavigationViewController: UIViewController {
 	}
 
 	func displayPromptView() {
+		if !viewModel.uiModel.displayPrompt {
+			return 
+		}
+
 		promptView.configure(with: viewModel.uiModel.prompt, onStart: {
 			self.animatedHidePrompt()
 		})

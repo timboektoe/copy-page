@@ -9,6 +9,7 @@ import UIKit
 
 protocol WebNavigationViewModelProtocol {
 	var uiModel: WebNavigationUiModel { get set }
+	
 }
 
 class WebNavigationViewModel: WebNavigationViewModelProtocol {
@@ -28,7 +29,7 @@ class WebNavigationViewModel: WebNavigationViewModelProtocol {
 					return .init(
 						title: item.name,
 						image: image,
-						ticked: UserDefaultsManager.container.bool(forKey: item.url),
+						ticked: UserDefaultsManager.container.bool(forKey: item.source),
 						route: {
 							guard let url = URL(string: item.url) else {
 								return
@@ -46,7 +47,8 @@ class WebNavigationViewModel: WebNavigationViewModelProtocol {
 				headline: L10n.Webnavigationview.Prompt.headline,
 				description: L10n.Webnavigationview.Prompt.description,
 				startButtonText: L10n.Webnavigationview.Prompt.button
-			)
+			),
+			displayPrompt: UserDefaultsManager.app.bool(forKey: "displayWebNavigationPrompt")
 		)
 
 		func readWebModels() -> WebSite {

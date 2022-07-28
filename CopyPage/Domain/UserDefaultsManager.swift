@@ -11,4 +11,5 @@ class UserDefaultsManager {
 
 	static let container = UserDefaults(suiteName: "group.copypage.safariappextension")!
 
+	static let app = UserDefaults.standard
 }
