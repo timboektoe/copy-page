@@ -20,7 +20,7 @@
 		"name": "Mijn UWV",
 		"imageName": "logo-uwv",
 		"url": "https://iwize.nl/gd-app-integration/index.html?source=uwv",
-		"source": "owv"
+		"source": "uwv"
 	},
 	{
 		"name": "Bankrekeningen",

@@ -17,14 +17,25 @@ class WebNavigationViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		viewModel.output = self
+
 		setupView()
 
 		contentView.configure(with: viewModel.uiModel)
 
 		displayPromptView()
+
+		// MARK: - Handle background
+
+		NotificationCenter.default.addObserver(self, selector: #selector(movedFromBackground), name: UIApplication.didBecomeActiveNotification, object: nil)
+	}
+
+	@objc func movedFromBackground() {
+		viewModel.forceUpdate()
 	}
 
 	func setupView() {
+
 		view.backgroundColor = .white
 		view.addSubview(contentView)
 
@@ -119,3 +130,9 @@ extension WebNavigationViewController: UICollectionViewDataSource, UICollectionV
 	}
 }
 
+extension WebNavigationViewController: WebNavigationViewModelOutput {
+	func uiModelDidUpdate() {
+		contentView.collectionView.reloadData()
+		contentView.configure(with: viewModel.uiModel)
+	}
+}

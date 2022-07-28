@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D47AAD72892B66300F593DD /* KeyValueObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D47AAD62892B66300F593DD /* KeyValueObserver.swift */; };
+		0D47AAD92892B69300F593DD /* UserDefaults+observe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D47AAD82892B69300F593DD /* UserDefaults+observe.swift */; };
+		0D47AADC2892B6E900F593DD /* WebItemsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D47AADB2892B6E900F593DD /* WebItemsRepository.swift */; };
 		0D86A08A28883B9F00498CDB /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D86A08928883B9F00498CDB /* PermissionViewController.swift */; };
 		0D86A08C2888453D00498CDB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D86A08B2888453D00498CDB /* HomeViewController.swift */; };
 		0D86A093288EA6CE00498CDB /* WebNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D86A092288EA6CE00498CDB /* WebNavigationViewController.swift */; };
@@ -89,6 +92,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D47AAD62892B66300F593DD /* KeyValueObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueObserver.swift; sourceTree = "<group>"; };
+		0D47AAD82892B69300F593DD /* UserDefaults+observe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+observe.swift"; sourceTree = "<group>"; };
+		0D47AADB2892B6E900F593DD /* WebItemsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebItemsRepository.swift; sourceTree = "<group>"; };
 		0D86A08928883B9F00498CDB /* PermissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
 		0D86A08B2888453D00498CDB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0D86A08D288853F000498CDB /* CopyPage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CopyPage.entitlements; sourceTree = "<group>"; };
@@ -172,6 +178,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D47AAD52892B65800F593DD /* KVO */ = {
+			isa = PBXGroup;
+			children = (
+				0D47AAD62892B66300F593DD /* KeyValueObserver.swift */,
+				0D47AAD82892B69300F593DD /* UserDefaults+observe.swift */,
+			);
+			path = KVO;
+			sourceTree = "<group>";
+		};
+		0D47AADA2892B6DD00F593DD /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				0D47AADB2892B6E900F593DD /* WebItemsRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		0D86A08628883B7200498CDB /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +235,7 @@
 		0D86A094288EA96C00498CDB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				0D47AAD52892B65800F593DD /* KVO */,
 				0D86A097288EA9DC00498CDB /* Autolayout */,
 			);
 			path = Extensions;
@@ -230,6 +254,7 @@
 		0D86A09A288EADCB00498CDB /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				0D47AADA2892B6DD00F593DD /* Repositories */,
 				0D86A09B288EADDA00498CDB /* Models */,
 				0D86A094288EA96C00498CDB /* Extensions */,
 				0D86A0BC288FE82F00498CDB /* UserDefaultsManager.swift */,
@@ -596,14 +621,17 @@
 				223D6C6B2882EC0D00C4368E /* AppDelegate.swift in Sources */,
 				223D6C752882EC0D00C4368E /* SceneDelegate.swift in Sources */,
 				0D86A093288EA6CE00498CDB /* WebNavigationViewController.swift in Sources */,
+				0D47AADC2892B6E900F593DD /* WebItemsRepository.swift in Sources */,
 				0D86A0B9288F360E00498CDB /* WebNavigationView.swift in Sources */,
 				0D86A0BF28901E9F00498CDB /* WebNavigationPromptView.swift in Sources */,
 				0D86A08A28883B9F00498CDB /* PermissionViewController.swift in Sources */,
 				0D86A0B0288EF30100498CDB /* AppColors.swift in Sources */,
 				0D86A0BD288FE82F00498CDB /* UserDefaultsManager.swift in Sources */,
 				0D86A08C2888453D00498CDB /* HomeViewController.swift in Sources */,
+				0D47AAD92892B69300F593DD /* UserDefaults+observe.swift in Sources */,
 				0D86A09D288EADEA00498CDB /* WebItemModel.swift in Sources */,
 				0D86A0BB288F362300498CDB /* WebNavigationCellView.swift in Sources */,
+				0D47AAD72892B66300F593DD /* KeyValueObserver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -901,7 +929,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -941,7 +969,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

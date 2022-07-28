@@ -8,23 +8,37 @@
 import UIKit
 
 protocol WebNavigationViewModelProtocol {
-	var uiModel: WebNavigationUiModel { get set }
-	
+	var uiModel: WebNavigationUiModel! { get set }
+	var output: WebNavigationViewModelOutput? { get set }
+
+	func forceUpdate()
+}
+
+protocol WebNavigationViewModelOutput {
+	func uiModelDidUpdate()
 }
 
 class WebNavigationViewModel: WebNavigationViewModelProtocol {
-	var uiModel: WebNavigationUiModel
+	var uiModel: WebNavigationUiModel!
+	var output: WebNavigationViewModelOutput?
+
+	private var repository = WebItemsRepository()
 
 	init(uiModel: WebNavigationUiModel) {
 		self.uiModel = uiModel
 	}
 
 	init() {
+		self.makeUiModel()
+	}
+
+
+	func makeUiModel() {
 		self.uiModel = .init(
 			titleImage: Asset.appLogo.image,
 			title: L10n.Webnavigationview.title,
 			subtitle: L10n.Webnavigationview.subtitle,
-			cells: readWebModels().compactMap { item in
+			cells: repository.readWebModels().compactMap { item in
 				if let image = UIImage(named: item.imageName) {
 					return .init(
 						title: item.name,
@@ -50,20 +64,10 @@ class WebNavigationViewModel: WebNavigationViewModelProtocol {
 			),
 			displayPrompt: UserDefaultsManager.app.bool(forKey: "displayWebNavigationPrompt")
 		)
+	}
 
-		func readWebModels() -> WebSite {
-			guard let url = Bundle.main.url(forResource: "webmodels", withExtension: "json") else {
-				fatalError("Cant find url")
-			}
-
-			do {
-				let data = try Data(contentsOf: url)
-				let decoder = JSONDecoder()
-				let result = try decoder.decode(WebSite.self, from: data)
-				return result
-			} catch {
-				fatalError(error.localizedDescription)
-			}
-		}
+	func forceUpdate() {
+		self.makeUiModel()
+		self.output?.uiModelDidUpdate()
 	}
 }
