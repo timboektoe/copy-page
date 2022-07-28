@@ -12,6 +12,7 @@ protocol WebNavigationViewModelProtocol {
 	var output: WebNavigationViewModelOutput? { get set }
 
 	func forceUpdate()
+	func isDisplayPrompt() -> Bool
 }
 
 protocol WebNavigationViewModelOutput {
@@ -61,9 +62,12 @@ class WebNavigationViewModel: WebNavigationViewModelProtocol {
 				headline: L10n.Webnavigationview.Prompt.headline,
 				description: L10n.Webnavigationview.Prompt.description,
 				startButtonText: L10n.Webnavigationview.Prompt.button
-			),
-			displayPrompt: UserDefaultsManager.app.bool(forKey: "displayWebNavigationPrompt")
+			)
 		)
+	}
+
+	func isDisplayPrompt() -> Bool {
+		return true
 	}
 
 	func forceUpdate() {

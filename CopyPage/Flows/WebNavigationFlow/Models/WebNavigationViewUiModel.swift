@@ -29,5 +29,4 @@ struct WebNavigationUiModel {
 	let subtitle: String
 	let cells: [WebNavigationCellUiModel]
 	let prompt: PromptUiModel
-	let displayPrompt: Bool
 }

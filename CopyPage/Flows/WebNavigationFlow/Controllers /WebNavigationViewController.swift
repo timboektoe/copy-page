@@ -21,8 +21,6 @@ class WebNavigationViewController: UIViewController {
 
 		setupView()
 
-		contentView.configure(with: viewModel.uiModel)
-
 		displayPromptView()
 
 		// MARK: - Handle background
@@ -51,21 +49,23 @@ class WebNavigationViewController: UIViewController {
 	}
 
 	func displayPromptView() {
-		if !viewModel.uiModel.displayPrompt {
-			return 
+
+		if !viewModel.isDisplayPrompt() {
+			return
 		}
 
 		promptView.configure(with: viewModel.uiModel.prompt, onStart: {
 			self.animatedHidePrompt()
 		})
-		contentView.addSubview(promptView)
+		view.addSubview(promptView)
+		self.contentView.isUserInteractionEnabled = false
 
 		promptView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			promptView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-			promptView.topAnchor.constraint(equalTo: contentView.topAnchor),
-			promptView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-			promptView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor)
+			promptView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			promptView.topAnchor.constraint(equalTo: view.topAnchor),
+			promptView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+			promptView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor)
 		])
 	}
 
@@ -79,6 +79,7 @@ class WebNavigationViewController: UIViewController {
 			)
 		}, completion: { success in
 			if success {
+				self.contentView.isUserInteractionEnabled = true
 				self.promptView.removeFromSuperview()
 			}
 		})
@@ -114,11 +115,11 @@ extension WebNavigationViewController: UICollectionViewDataSource, UICollectionV
 	}
 
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		return CGSize(width: collectionView.frame.width * 0.4, height: collectionView.frame.width * 0.4)
+		return CGSize(width: collectionView.frame.width * 0.35, height: collectionView.frame.width * 0.35)
 	}
 
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-		return 0
+		return collectionView.frame.width*0.05
 	}
 
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
