@@ -8,6 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 source: source,
                 status: 'done'
             }));
+
+            setTimeout(() => {
+                // From here we could experiment reopening the app with a deeplink,
+                // in this way it should be possible to communicate data back to the app as well.
+            }, 4000)
         }
     }
 }, false);
