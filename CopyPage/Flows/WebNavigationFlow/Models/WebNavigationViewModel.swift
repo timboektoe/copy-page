@@ -28,14 +28,11 @@ class WebNavigationViewModel: WebNavigationViewModelProtocol {
 					return .init(
 						title: item.name,
 						image: image,
-						ticked: UserDefaultsManager.container.bool(forKey: item.name),
+						ticked: UserDefaultsManager.container.bool(forKey: item.url),
 						route: {
-							guard let url = URL(string: "https://acct-stubs.aqopi.com/stub.html?source=moh&profile=test&timeout=0&redirects=0&redirectTimeout=0") else {
+							guard let url = URL(string: item.url) else {
 								return
 							}
-//							guard let url = URL(string: item.url) else {
-//								return
-//							}
 
 							UIApplication.shared.open(url)
 						}

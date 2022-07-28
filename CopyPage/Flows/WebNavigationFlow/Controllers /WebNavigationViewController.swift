@@ -88,6 +88,12 @@ extension WebNavigationViewController: UICollectionViewDataSource, UICollectionV
 	}
 
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		let cell = viewModel.uiModel.cells[indexPath.row]
+
+		if cell.ticked {
+			return
+		}
+
 		viewModel.uiModel.cells[indexPath.row].route()
 	}
 

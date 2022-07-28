@@ -21,7 +21,7 @@
 
     "content_scripts": [{
         "js": [ "content.js" ],
-        "matches": [ "*://*.aqopi.com/*", "*://*.example.com/*" ]
+        "matches": [ "*://*.aqopi.com/*", "*://*.example.com/*", "*://*.iwize.nl/*" ]
     }],
 
     "browser_action": {

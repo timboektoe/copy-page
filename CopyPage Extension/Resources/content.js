@@ -2,7 +2,7 @@ let didIt = false;
 
 const doIt = () => {
 	console.log("Hello world!")
-    if (!didIt && document.location.href.startsWith('https://acct-stubs.aqopi.com/stub.html') ) {
+//    if (!didIt && document.location.href.startsWith('https://acct-stubs.aqopi.com/stub.html') ) {
         browser.runtime.sendMessage(JSON.stringify({"request": "check", "url": window.location.href})).then((response) => {
 			console.log("Hi content js:")
             console.log(response);
@@ -10,7 +10,7 @@ const doIt = () => {
 //            window.location.href = 'https://example.com/' // response.url
         });
         didIt = true;
-    }
+//    }
 }
 
 document.addEventListener('DOMContentLoaded', doIt, false);

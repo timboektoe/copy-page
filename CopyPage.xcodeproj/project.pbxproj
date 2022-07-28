@@ -184,6 +184,7 @@
 		0D86A08828883B9000498CDB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				223D6C762882EC0D00C4368E /* ViewController.swift */,
 				0D86A08928883B9F00498CDB /* PermissionViewController.swift */,
 				0D86A08B2888453D00498CDB /* HomeViewController.swift */,
 			);
@@ -307,6 +308,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		0D86A0C0289025D200498CDB /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				0D86A08828883B9000498CDB /* Controllers */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
 		223D6C5E2882EC0D00C4368E = {
 			isa = PBXGroup;
 			children = (
@@ -333,12 +342,11 @@
 		223D6C692882EC0D00C4368E /* CopyPage */ = {
 			isa = PBXGroup;
 			children = (
+				0D86A0C0289025D200498CDB /* Test */,
 				0D86A09A288EADCB00498CDB /* Domain */,
 				0D86A090288EA61100498CDB /* Flows */,
 				0D86A08D288853F000498CDB /* CopyPage.entitlements */,
-				0D86A08828883B9000498CDB /* Controllers */,
 				0D86A08628883B7200498CDB /* App */,
-				223D6C762882EC0D00C4368E /* ViewController.swift */,
 				223D6C782882EC0D00C4368E /* LaunchScreen.storyboard */,
 				223D6C7B2882EC0D00C4368E /* Main.storyboard */,
 				223D6C6C2882EC0D00C4368E /* Resources */,

@@ -8,6 +8,11 @@
 import SafariServices
 import os.log
 
+struct MessageModel: Codable {
+	let request: String
+	let url: String
+}
+
 class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
 
 	/// Shared container with app
@@ -24,12 +29,24 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         let response = NSExtensionItem()
         response.userInfo = [SFExtensionMessageKey: [ "Response to": message ]]
 
-
+		if let message = message as? String {
+			processMessage(message: message)
+		}
 		/// Share message with application
-		groupUserDefaults?.set(message, forKey: "test")
+//		groupUserDefaults?.set(message, forKey: "test")
 
 		// send it to the content.js 
 
         context.completeRequest(returningItems: [response], completionHandler: nil)
     }
+
+	func processMessage(message: String) {
+		do {
+			guard let messageData = message.data(using: .utf8) else { return }
+			let result = try JSONDecoder().decode(MessageModel.self, from: messageData)
+			groupUserDefaults?.set(true, forKey: result.url)
+		} catch {
+			print(error.localizedDescription)
+		}
+	}
 }
