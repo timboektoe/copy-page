@@ -12,7 +12,7 @@ protocol WebNavigationViewModelProtocol {
 	var output: WebNavigationViewModelOutput? { get set }
 
 	func forceUpdate()
-	func isDisplayPrompt() -> Bool
+	func buildPromptForView(for site: WebSiteElement) -> WebNavigationPromptView
 }
 
 protocol WebNavigationViewModelOutput {
@@ -45,29 +45,34 @@ class WebNavigationViewModel: WebNavigationViewModelProtocol {
 						title: item.name,
 						image: image,
 						ticked: UserDefaultsManager.container.bool(forKey: item.source),
-						route: {
-							guard let url = URL(string: item.url) else {
-								return
-							}
-
-							UIApplication.shared.open(url)
+						action: {
+							return self.buildPromptForView(for: item)
 						}
 					)
 				}
 				return nil
-			},
-			prompt: .init(
-				titleImage: Asset.appLogo.image,
-				title: L10n.Webnavigationview.Prompt.title,
-				headline: L10n.Webnavigationview.Prompt.headline,
-				description: L10n.Webnavigationview.Prompt.description,
-				startButtonText: L10n.Webnavigationview.Prompt.button
-			)
+			}
 		)
 	}
 
-	func isDisplayPrompt() -> Bool {
-		return true
+	func buildPromptForView(for site: WebSiteElement) -> WebNavigationPromptView {
+		let uiModel = WebNavigationUiModel.PromptUiModel(
+			titleImage: Asset.appLogo.image,
+			title: L10n.Webnavigationview.Prompt.title,
+			headline: L10n.Webnavigationview.Prompt.headline(site.name),
+			description: L10n.Webnavigationview.Prompt.description,
+			startButtonText: L10n.Webnavigationview.Prompt.button
+		)
+
+		let promptView = WebNavigationPromptView()
+		promptView.configure(with: uiModel, onStart: {
+			guard let url = URL(string: site.url) else {
+				return
+			}
+
+			UIApplication.shared.open(url)
+		})
+		return promptView
 	}
 
 	func forceUpdate() {

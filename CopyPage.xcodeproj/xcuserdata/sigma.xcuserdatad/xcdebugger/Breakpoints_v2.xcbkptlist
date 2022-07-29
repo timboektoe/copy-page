@@ -20,21 +20,5 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8B31BEB0-C4FA-490F-B241-DE14F54A5888"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CopyPage/Flows/WebNavigationFlow/Models/WebNavigationViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "isDisplayPrompt()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

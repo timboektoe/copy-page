@@ -29,8 +29,10 @@ public enum L10n {
       /// - Inkomens gegevens
       /// - ID gegevens
       public static let description = L10n.tr("Localizable", "webnavigationview.prompt.description")
-      /// MijnOverheid
-      public static let headline = L10n.tr("Localizable", "webnavigationview.prompt.headline")
+      /// %@
+      public static func headline(_ p1: Any) -> String {
+        return L10n.tr("Localizable", "webnavigationview.prompt.headline", String(describing: p1))
+      }
       /// Gegevens verzamelen bij
       public static let title = L10n.tr("Localizable", "webnavigationview.prompt.title")
     }

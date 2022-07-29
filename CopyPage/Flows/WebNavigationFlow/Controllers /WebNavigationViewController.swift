@@ -12,7 +12,6 @@ class WebNavigationViewController: UIViewController {
 	var viewModel: WebNavigationViewModelProtocol = WebNavigationViewModel()
 
 	@UseAutoLayout var contentView: WebNavigationView = WebNavigationView()
-	@UseAutoLayout var promptView: WebNavigationPromptView = WebNavigationPromptView()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -21,8 +20,6 @@ class WebNavigationViewController: UIViewController {
 
 		setupView()
 
-		displayPromptView()
-
 		// MARK: - Handle background
 
 		NotificationCenter.default.addObserver(self, selector: #selector(movedFromBackground), name: UIApplication.didBecomeActiveNotification, object: nil)
@@ -30,6 +27,7 @@ class WebNavigationViewController: UIViewController {
 
 	@objc func movedFromBackground() {
 		viewModel.forceUpdate()
+		debugPrint(UserDefaultsManager.container.array(forKey: "extensionErrors"))
 	}
 
 	func setupView() {
@@ -48,18 +46,8 @@ class WebNavigationViewController: UIViewController {
 		contentView.collectionView.delegate = self
 	}
 
-	func displayPromptView() {
-
-		if !viewModel.isDisplayPrompt() {
-			return
-		}
-
-		promptView.configure(with: viewModel.uiModel.prompt, onStart: {
-			self.animatedHidePrompt()
-		})
+	func displayPromptView(promptView: WebNavigationPromptView) {
 		view.addSubview(promptView)
-		self.contentView.isUserInteractionEnabled = false
-
 		promptView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			promptView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -67,20 +55,40 @@ class WebNavigationViewController: UIViewController {
 			promptView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			promptView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor)
 		])
+
+		promptView.frame = CGRect(
+			x: promptView.frame.origin.x,
+			y: -promptView.frame.maxY,
+			width: promptView.frame.width,
+			height: promptView.frame.height
+		)
+
+		UIView.animate(withDuration: 1, delay: 0, options: .curveLinear, animations: {
+			promptView.frame = CGRect(
+				x: promptView.frame.origin.x,
+				y: 0,
+				width: promptView.frame.width,
+				height: promptView.frame.height
+			)
+		}, completion: { result in
+			if result {
+				self.contentView.isUserInteractionEnabled = false
+			}
+		})
 	}
 
-	func animatedHidePrompt() {
+	func animatedHidePrompt(promptView: WebNavigationPromptView) {
 		UIView.animate(withDuration: 0.5, delay: 0, animations: {
-			self.promptView.frame = CGRect(
-				x: self.promptView.frame.origin.x,
-				y: -self.promptView.frame.maxY,
-				width: self.promptView.frame.width,
-				height: self.promptView.frame.height
+			promptView.frame = CGRect(
+				x: promptView.frame.origin.x,
+				y: -promptView.frame.maxY,
+				width: promptView.frame.width,
+				height: promptView.frame.height
 			)
 		}, completion: { success in
 			if success {
 				self.contentView.isUserInteractionEnabled = true
-				self.promptView.removeFromSuperview()
+				promptView.removeFromSuperview()
 			}
 		})
 	}
@@ -111,7 +119,12 @@ extension WebNavigationViewController: UICollectionViewDataSource, UICollectionV
 			return
 		}
 
-		viewModel.uiModel.cells[indexPath.row].route()
+		let promptView = viewModel.uiModel.cells[indexPath.row].action()
+		promptView.completion = {
+			self.contentView.isUserInteractionEnabled = true
+			promptView.removeFromSuperview()
+		}
+		displayPromptView(promptView: promptView)
 	}
 
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

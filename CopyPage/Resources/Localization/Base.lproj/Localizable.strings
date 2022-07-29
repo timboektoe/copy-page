@@ -5,8 +5,6 @@
 "webnavigationview.subtitle" = "Maak je dossier compleet\ndoor stap voor stap je\ndata te verzamelen\nbij onderstaande bronnen";
 
 "webnavigationview.prompt.title" = "Gegevens verzamelen bij";
-"webnavigationview.prompt.headline" = "MijnOverheid";
+"webnavigationview.prompt.headline" = "%@";
 "webnavigationview.prompt.description" = "je verzameld hier\nde volgende gegevens:\n\n- BRP gegevens\n- Inkomens gegevens\n- ID gegevens";
 "webnavigationview.prompt.button" = "Start";
-
-

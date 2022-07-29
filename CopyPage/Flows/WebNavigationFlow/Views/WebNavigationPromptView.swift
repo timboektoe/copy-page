@@ -21,6 +21,8 @@ class WebNavigationPromptView: UIView {
 
 	var startButton = UIButton()
 
+	var completion: (() -> Void)?
+
 	private var onStart: (() -> Void)?
 
 	// MARK: Initializers
@@ -100,5 +102,6 @@ class WebNavigationPromptView: UIView {
 
 	@objc private func startButtonTouchDown() {
 		onStart?()
+		completion?()
 	}
 }

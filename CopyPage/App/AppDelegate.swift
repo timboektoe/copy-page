@@ -14,8 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-		debugPrint(UserDefaultsManager.container.string(forKey: "extensionErrors"))
-		
+		debugPrint(UserDefaultsManager.container.array(forKey: "extensionErrors"))
+//		UserDefaultsManager.container.set([], forKey: "extensionErrors")
 		return true
     }
 

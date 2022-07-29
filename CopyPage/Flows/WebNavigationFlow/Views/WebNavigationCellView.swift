@@ -44,9 +44,10 @@ class WebNavigationCellView: UICollectionViewCell {
 	func setupView() {
 		backgroundColor = .white
 		layer.masksToBounds = true
+		clipsToBounds = false
 		layer.cornerRadius = 10
 
-		imageView.contentMode = .center
+		imageView.contentMode = .scaleAspectFit
 
 		tickImage.image = Asset.tick.image
 
@@ -59,6 +60,7 @@ class WebNavigationCellView: UICollectionViewCell {
 
 		addSubview(imageView)
 		addSubview(label)
+		addSubview(tickImage)
 
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -74,44 +76,13 @@ class WebNavigationCellView: UICollectionViewCell {
 			label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
 			label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5)
 		])
-	}
 
-//	func setupLayout() {
-//
-//		let stackView = UIStackView(arrangedSubviews: [imageView, label])
-//
-//		stackView.backgroundColor = .white
-//		stackView.axis = .vertical
-//		stackView.alignment = .center
-//		stackView.layer.cornerRadius = 10
-//		stackView.layer.masksToBounds = true
-//		stackView.spacing = 20
-//
-//		addSubview(stackView)
-//
-//		let inset: CGFloat = 0
-//
-//		stackView.translatesAutoresizingMaskIntoConstraints = false
-//		NSLayoutConstraint.activate([
-//			stackView.leadingAnchor.constraint(equalTo: stackView.superview!.leadingAnchor, constant: inset),
-//			stackView.trailingAnchor.constraint(equalTo: stackView.superview!.trailingAnchor, constant: -inset),
-//			stackView.topAnchor.constraint(equalTo: stackView.superview!.topAnchor, constant: inset),
-//			stackView.bottomAnchor.constraint(equalTo: stackView.superview!.bottomAnchor, constant: -inset)
-//		])
-//
-//		addSubview(tickImage)
-//
-//		tickImage.translatesAutoresizingMaskIntoConstraints = false
-//		NSLayoutConstraint.activate([
-//			tickImage.leadingAnchor.constraint(equalTo: tickImage.superview!.leadingAnchor),
-//			tickImage.topAnchor.constraint(equalTo: tickImage.superview!.topAnchor),
-//			tickImage.heightAnchor.constraint(equalToConstant: 50),
-//			tickImage.widthAnchor.constraint(equalToConstant: 50)
-//		])
-//
-//		label.translatesAutoresizingMaskIntoConstraints = false
-//		NSLayoutConstraint.activate([
-//			label.bottomAnchor.constraint(equalTo: label.superview!.bottomAnchor)
-//		])
-//	}
+		tickImage.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			tickImage.leadingAnchor.constraint(equalTo: tickImage.superview!.leadingAnchor, constant: -15),
+			tickImage.topAnchor.constraint(equalTo: tickImage.superview!.topAnchor, constant: -15),
+			tickImage.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.4),
+			tickImage.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.4)
+		])
+	}
 }
