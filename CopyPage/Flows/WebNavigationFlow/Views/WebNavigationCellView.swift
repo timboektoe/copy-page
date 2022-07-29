@@ -56,6 +56,8 @@ class WebNavigationCellView: UICollectionViewCell {
 		label.textAlignment = .center
 	}
 
+	// TODO: Make images smaller 70%
+
 	func setupLayout() {
 
 		addSubview(imageView)
