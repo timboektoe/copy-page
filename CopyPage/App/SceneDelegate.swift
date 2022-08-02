@@ -11,11 +11,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+	var navigationController: UINavigationController = {
+		let navigationController = UINavigationController(rootViewController: WebNavigationViewController())
+		navigationController.setNavigationBarHidden(true, animated: false)
+		return navigationController
+	}()
+
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
-		guard let _ = (scene as? UIWindowScene) else { return }
+		guard let windowScene = (scene as? UIWindowScene) else { return }
 
-		window?.overrideUserInterfaceStyle = .light
-
+		let window = UIWindow(windowScene: windowScene)
+		window.rootViewController = navigationController  // Your initial view controller.
+		window.makeKeyAndVisible()
+		window.overrideUserInterfaceStyle = .light
+		self.window = window
     }
 }

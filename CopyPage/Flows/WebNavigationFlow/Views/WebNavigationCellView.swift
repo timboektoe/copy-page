@@ -23,7 +23,9 @@ class WebNavigationCellView: UICollectionViewCell {
 		super.init(frame: frame)
 
 		setupView()
+
 		setupLayout()
+
 	}
 
 	required init?(coder: NSCoder) {
@@ -56,8 +58,6 @@ class WebNavigationCellView: UICollectionViewCell {
 		label.textAlignment = .center
 	}
 
-	// TODO: Make images smaller 70%
-
 	func setupLayout() {
 
 		addSubview(imageView)
@@ -66,16 +66,16 @@ class WebNavigationCellView: UICollectionViewCell {
 
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-			imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+			imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+			imageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.7),
 			imageView.topAnchor.constraint(equalTo: topAnchor),
-			imageView.bottomAnchor.constraint(equalTo: label.topAnchor)
+			imageView.bottomAnchor.constraint(equalTo: label.topAnchor, constant: -10)
 		])
 
 		label.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-			label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+			label.leadingAnchor.constraint(equalTo: leadingAnchor),
+			label.trailingAnchor.constraint(equalTo: trailingAnchor),
 			label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5)
 		])
 

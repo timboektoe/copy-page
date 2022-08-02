@@ -11,30 +11,70 @@ import Foundation
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 public enum L10n {
 
+  public enum Documentsnavigationview {
+    /// Onderstaande documenten
+    /// zijn door jou verzameld.
+    /// Klik om te bekijken
+    public static let subtitle = L10n.tr("Localizable", "documentsnavigationview.subtitle")
+    /// Gegevens bekijken
+    public static let title = L10n.tr("Localizable", "documentsnavigationview.title")
+    public enum Tiles {
+      public enum Images {
+        /// Overzicht
+        public static let subtitle = L10n.tr("Localizable", "documentsnavigationview.tiles.images.subtitle")
+        /// Belastingdienst
+        public static let title = L10n.tr("Localizable", "documentsnavigationview.tiles.images.title")
+      }
+      public enum Pensioen {
+        /// Pensioenoverzicht
+        public static let subtitle = L10n.tr("Localizable", "documentsnavigationview.tiles.pensioen.subtitle")
+        /// Mijn Pensioen
+        public static let title = L10n.tr("Localizable", "documentsnavigationview.tiles.pensioen.title")
+      }
+      public enum Uwv {
+        /// Inkomensverklaring
+        public static let subtitle = L10n.tr("Localizable", "documentsnavigationview.tiles.uwv.subtitle")
+        /// Mijn UWV
+        public static let title = L10n.tr("Localizable", "documentsnavigationview.tiles.uwv.title")
+      }
+    }
+  }
+
   public enum Webnavigationview {
-    /// Maak je dossier compleet
-    /// door stap voor stap je
-    /// data te verzamelen
-    /// bij onderstaande bronnen
-    public static let subtitle = L10n.tr("Localizable", "webnavigationview.subtitle")
-    /// Gegevens verzamelen
-    public static let title = L10n.tr("Localizable", "webnavigationview.title")
-    public enum Prompt {
+    public enum DoneHeader {
+      /// Volgende
+      public static let button = L10n.tr("Localizable", "webnavigationview.doneHeader.button")
+      /// Kies volgende om
+      /// je gegevens te bekijken
+      public static let subtitle = L10n.tr("Localizable", "webnavigationview.doneHeader.subtitle")
+      /// Gegevens compleet
+      public static let title = L10n.tr("Localizable", "webnavigationview.doneHeader.title")
+    }
+    public enum Header {
+      /// Maak je dossier compleet
+      /// door stap voor stap je
+      /// data te verzamelen
+      /// bij onderstaande bronnen
+      public static let subtitle = L10n.tr("Localizable", "webnavigationview.header.subtitle")
+      /// Gegevens verzamelen
+      public static let title = L10n.tr("Localizable", "webnavigationview.header.title")
+    }
+    public enum PromptHeader {
       /// Start
-      public static let button = L10n.tr("Localizable", "webnavigationview.prompt.button")
+      public static let button = L10n.tr("Localizable", "webnavigationview.promptHeader.button")
       /// je verzameld hier
       /// de volgende gegevens:
       /// 
       /// - BRP gegevens
       /// - Inkomens gegevens
       /// - ID gegevens
-      public static let description = L10n.tr("Localizable", "webnavigationview.prompt.description")
+      public static let description = L10n.tr("Localizable", "webnavigationview.promptHeader.description")
       /// %@
       public static func headline(_ p1: Any) -> String {
-        return L10n.tr("Localizable", "webnavigationview.prompt.headline", String(describing: p1))
+        return L10n.tr("Localizable", "webnavigationview.promptHeader.headline", String(describing: p1))
       }
       /// Gegevens verzamelen bij
-      public static let title = L10n.tr("Localizable", "webnavigationview.prompt.title")
+      public static let title = L10n.tr("Localizable", "webnavigationview.promptHeader.title")
     }
   }
 }

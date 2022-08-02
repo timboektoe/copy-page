@@ -1,10 +1,28 @@
 
 // Web Navigation View
 
-"webnavigationview.title" = "Gegevens verzamelen";
-"webnavigationview.subtitle" = "Maak je dossier compleet\ndoor stap voor stap je\ndata te verzamelen\nbij onderstaande bronnen";
+"webnavigationview.header.title" = "Gegevens verzamelen";
+"webnavigationview.header.subtitle" = "Maak je dossier compleet\ndoor stap voor stap je\ndata te verzamelen\nbij onderstaande bronnen";
 
-"webnavigationview.prompt.title" = "Gegevens verzamelen bij";
-"webnavigationview.prompt.headline" = "%@";
-"webnavigationview.prompt.description" = "je verzameld hier\nde volgende gegevens:\n\n- BRP gegevens\n- Inkomens gegevens\n- ID gegevens";
-"webnavigationview.prompt.button" = "Start";
+"webnavigationview.promptHeader.title" = "Gegevens verzamelen bij";
+"webnavigationview.promptHeader.headline" = "%@";
+"webnavigationview.promptHeader.description" = "je verzameld hier\nde volgende gegevens:\n\n- BRP gegevens\n- Inkomens gegevens\n- ID gegevens";
+"webnavigationview.promptHeader.button" = "Start";
+
+"webnavigationview.doneHeader.title" = "Gegevens compleet";
+"webnavigationview.doneHeader.subtitle" = "Kies volgende om\nje gegevens te bekijken";
+"webnavigationview.doneHeader.button" = "Volgende";
+
+// Documents Navigation View
+
+"documentsnavigationview.title" = "Gegevens bekijken";
+"documentsnavigationview.subtitle" = "Onderstaande documenten\nzijn door jou verzameld.\nKlik om te bekijken";
+
+"documentsnavigationview.tiles.uwv.title" = "Mijn UWV";
+"documentsnavigationview.tiles.uwv.subtitle" = "Inkomensverklaring";
+
+"documentsnavigationview.tiles.pensioen.title" = "Mijn Pensioen";
+"documentsnavigationview.tiles.pensioen.subtitle" = "Pensioenoverzicht";
+
+"documentsnavigationview.tiles.images.title" = "Belastingdienst";
+"documentsnavigationview.tiles.images.subtitle" = "Overzicht";

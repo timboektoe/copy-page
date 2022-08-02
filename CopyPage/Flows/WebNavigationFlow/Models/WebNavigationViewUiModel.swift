@@ -13,7 +13,7 @@ struct WebNavigationUiModel {
 		let title: String
 		let image: UIImage
 		let ticked: Bool
-		let action: () -> WebNavigationPromptView
+		let displayPromptHeader: () -> Void
 	}
 
 	struct PromptUiModel {
@@ -27,5 +27,5 @@ struct WebNavigationUiModel {
 	let titleImage: UIImage
 	let title: String
 	let subtitle: String
-	let cells: [WebNavigationCellUiModel]
+	var cells: [WebNavigationCellUiModel]
 }
