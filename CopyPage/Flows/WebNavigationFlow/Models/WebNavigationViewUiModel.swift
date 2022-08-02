@@ -16,16 +16,5 @@ struct WebNavigationUiModel {
 		let displayPromptHeader: () -> Void
 	}
 
-	struct PromptUiModel {
-		let titleImage: UIImage
-		let title: String
-		let headline: String
-		let description: String
-		let startButtonText: String
-	}
-
-	let titleImage: UIImage
-	let title: String
-	let subtitle: String
 	var cells: [WebNavigationCellUiModel]
 }

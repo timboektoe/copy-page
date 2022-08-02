@@ -23,12 +23,13 @@ public typealias AssetImageTypeAlias = ImageAsset.Image
 public enum Asset {
   public static let accentColor = ColorAsset(name: "AccentColor")
   public static let icon = ImageAsset(name: "Icon")
-  public static let largeIcon = ImageAsset(name: "LargeIcon")
   public static let appLogo = ImageAsset(name: "AppLogo")
   public static let bank = ImageAsset(name: "bank")
   public static let heraldicLogo = ImageAsset(name: "heraldicLogo")
   public static let logoUwv = ImageAsset(name: "logo-uwv")
   public static let mpoLogo = ImageAsset(name: "mpo-logo")
+  public static let imageIcon = ImageAsset(name: "imageIcon")
+  public static let pdfIcon = ImageAsset(name: "pdfIcon")
   public static let tick = ImageAsset(name: "tick")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

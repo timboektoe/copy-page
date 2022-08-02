@@ -33,9 +33,6 @@ class WebNavigationViewModel: WebNavigationViewModelProtocol {
 
 	init() {
 		self.uiModel = .init(
-			titleImage: Asset.appLogo.image,
-			title: L10n.Webnavigationview.Header.title,
-			subtitle: L10n.Webnavigationview.Header.subtitle,
 			cells: []
 		)
 	}

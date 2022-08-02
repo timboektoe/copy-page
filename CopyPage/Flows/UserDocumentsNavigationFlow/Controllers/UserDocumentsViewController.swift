@@ -9,11 +9,14 @@ import UIKit
 
 class UserDocumentsViewController: UIViewController {
 
-	var contentView = FormView<UserDocumentsView, HeaderView>()
+	@UseAutoLayout var contentView = FormView<UserDocumentsView, HeaderView>()
+
+	var viewModel: UserDocumentsViewModelProtocol = UserDocumentsViewModel()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		contentView.content.configure(cellsUiModels: viewModel.uiModel.cells)
 
 		setupView()
 
@@ -30,7 +33,6 @@ class UserDocumentsViewController: UIViewController {
 	func setupLayout() {
 
 		view.addSubview(contentView)
-		contentView.translatesAutoresizingMaskIntoConstraints = false
 
 		NSLayoutConstraint.activate([
 			contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
@@ -42,18 +44,4 @@ class UserDocumentsViewController: UIViewController {
 	}
 }
 
-class UserDocumentsView: UIView {
 
-	override init(frame: CGRect) {
-		super.init(frame: frame)
-		setupView()
-	}
-
-	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-
-	func setupView() {
-		backgroundColor = AppColors.background
-	}
-}
