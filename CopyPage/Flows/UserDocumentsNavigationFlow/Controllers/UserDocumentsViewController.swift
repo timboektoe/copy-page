@@ -16,7 +16,7 @@ class UserDocumentsViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		contentView.content.configure(cellsUiModels: viewModel.uiModel.cells)
+		contentView.content.configure(cellsUiModels: viewModel.uiModel.cells, navigationController: navigationController)
 
 		setupView()
 

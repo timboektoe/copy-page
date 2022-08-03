@@ -40,14 +40,13 @@ class UserDocumentsView: UIView {
 
 		let itemsView: UIView = {
 			let view = UIView()
-			view.backgroundColor = AppColors.accent
+			view.backgroundColor = AppColors.background
 			view.addSubview(items)
 			items.translatesAutoresizingMaskIntoConstraints = false
 
 			NSLayoutConstraint.activate([
 				items.widthAnchor.constraint(equalTo: view.widthAnchor),
 				items.topAnchor.constraint(equalTo: view.topAnchor, constant: 40)
-//				items.heightAnchor.constraint(equalTo: view.heightAnchor, constant: -10)
 			])
 			return view
 		}()
@@ -71,7 +70,10 @@ class UserDocumentsView: UIView {
 		])
 	}
 
-	func configure(cellsUiModels: [UserDocumentsUiModel.UserDocumentsCellUiModel]) {
+	func configure(
+		cellsUiModels: [UserDocumentsUiModel.UserDocumentsCellUiModel],
+		navigationController: UINavigationController?
+	) {
 		cellsUiModels.forEach { cellUiModel in
 			let cell = UserDocumentsNavigationСell()
 
@@ -79,7 +81,11 @@ class UserDocumentsView: UIView {
 				title: cellUiModel.title,
 				subtitle: cellUiModel.subtitle,
 				image: cellUiModel.image,
-				action: cellUiModel.action
+				action: {
+					if let navigationController = navigationController {
+						cellUiModel.action(navigationController)
+					}
+				}
 			)
 
 			items.addArrangedSubview(cell)

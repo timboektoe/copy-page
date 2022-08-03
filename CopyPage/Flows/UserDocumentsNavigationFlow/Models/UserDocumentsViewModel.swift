@@ -13,7 +13,7 @@ struct UserDocumentsUiModel {
 		let title: String
 		let subtitle: String
 		let image: UIImage
-		let action: () -> Void
+		let action: (UINavigationController) -> Void
 	}
 
 	let cells: [UserDocumentsCellUiModel]
@@ -28,14 +28,20 @@ class UserDocumentsViewModel: UserDocumentsViewModelProtocol {
 
 	init() {
 		self.uiModel = .init(cells: [
-			.init(title: L10n.Documentsnavigationview.Tiles.Uwv.title, subtitle: L10n.Documentsnavigationview.Tiles.Uwv.subtitle, image: Asset.pdfIcon.image, action: {
-				print("some text")
+			.init(title: L10n.Documentsnavigationview.Tiles.Uwv.title, subtitle: L10n.Documentsnavigationview.Tiles.Uwv.subtitle, image: Asset.pdfIcon.image, action: { navigationController in
+				let documentsViewController = DocumentsViewController()
+				documentsViewController.viewModel = PDFDocumentsViewModel()
+				navigationController.pushViewController(documentsViewController, animated: false)
 			}),
-			.init(title: L10n.Documentsnavigationview.Tiles.Pensioen.title, subtitle: L10n.Documentsnavigationview.Tiles.Pensioen.subtitle, image: Asset.pdfIcon.image, action: {
-				print("some text 2")
+			.init(title: L10n.Documentsnavigationview.Tiles.Pensioen.title, subtitle: L10n.Documentsnavigationview.Tiles.Pensioen.subtitle, image: Asset.pdfIcon.image, action: { navigationController in
+				let documentsViewController = DocumentsViewController()
+				documentsViewController.viewModel = PDFDocumentsViewModel()
+				navigationController.pushViewController(documentsViewController, animated: false)
 			}),
-			.init(title: L10n.Documentsnavigationview.Tiles.Images.title, subtitle: L10n.Documentsnavigationview.Tiles.Images.subtitle, image: Asset.imageIcon.image, action: {
-				print("some text 3")
+			.init(title: L10n.Documentsnavigationview.Tiles.Images.title, subtitle: L10n.Documentsnavigationview.Tiles.Images.subtitle, image: Asset.imageIcon.image, action: { navigationController in
+				let documentsViewController = DocumentsViewController()
+				documentsViewController.viewModel = ImageDocumentsViewModel()
+				navigationController.pushViewController(documentsViewController, animated: false)
 			})
 		])
 	}
