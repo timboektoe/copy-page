@@ -16,7 +16,13 @@ class DocumentsViewController: UIViewController, DocumentsViewProtocol {
 
 		interactor.loadCells()
 
+	}
+
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
 		navigationController?.setNavigationBarHidden(false, animated: false)
+
 	}
 
 	override func viewWillDisappear(_ animated: Bool) {

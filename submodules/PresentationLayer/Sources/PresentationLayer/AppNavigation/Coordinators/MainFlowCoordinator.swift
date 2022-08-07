@@ -29,7 +29,7 @@ class MainFlowCoordinator: BaseCoordinator, MainFlowCoordinatorOutput {
 	func showDocumentsModule(for type: DocumentsRepository.DocumentType) {
 		InjectedValues[\.documentsRepositoryKey] = DocumentsRepository(type: type)
 		let documentsModule = moduleFactory.makeDocumentsModule(onSelect: showDocumentPreview(for:))
-		router.push(documentsModule)
+		router.push(documentsModule, animated: true)
 	}
 
 	func showDocumentPreview(for url: URL) {
@@ -61,5 +61,33 @@ class ScrapDataFlowCoordinator: BaseCoordinator, ScrapDataFlowCoordinatorOutput 
 	func showMakeWebNavigationModule() {
 		let scrapDataNavigationModule = moduleFactory.makeWebNavigationModule(onDone: finishFlow)
 		router.setRootModule(scrapDataNavigationModule, hideBar: true)
+	}
+}
+
+public protocol PasswordFlowCoordinatorOutput: AnyObject {
+	var finishFlow: (() -> Void)? { get set }
+}
+
+class PasswordFlowCoordinator: BaseCoordinator, PasswordFlowCoordinatorOutput {
+
+	var finishFlow: (() -> Void)?
+
+	private let moduleFactory: WebNavigationModuleFactory
+	private let router: Router
+
+	internal init(moduleFactory: WebNavigationModuleFactory, router: Router) {
+		self.moduleFactory = moduleFactory
+		self.router = router
+	}
+
+	override func start() {
+		showPasswordModule()
+	}
+
+	func showPasswordModule() {
+		let module = moduleFactory.makePasswordModule(onDone: {
+			self.finishFlow?()
+		})
+		router.setRootModule(module, hideBar: true)
 	}
 }

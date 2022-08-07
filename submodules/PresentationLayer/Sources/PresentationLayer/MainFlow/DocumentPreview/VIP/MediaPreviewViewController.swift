@@ -28,7 +28,7 @@ class MediaPreviewViewController: UIViewController, DocumentPreviewViewProtocol 
 			contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-			contentView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor)
+			contentView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
 		])
 	}
 }
@@ -48,9 +48,7 @@ class MediaPreviewView: UIView {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	func setupView() {
-		self.preview.backgroundColor = .red
-	}
+	func setupView() {	}
 
 	func setupLayout() {
 		addSubview(preview)
@@ -90,10 +88,10 @@ class MediaPreviewView: UIView {
 			self.preview.addSubview(view)
 
 			NSLayoutConstraint.activate([
-				view.leadingAnchor.constraint(equalTo: leadingAnchor),
-				view.topAnchor.constraint(equalTo: topAnchor),
-				view.trailingAnchor.constraint(equalTo: trailingAnchor),
-				view.bottomAnchor.constraint(equalTo: bottomAnchor),
+				view.leadingAnchor.constraint(equalTo: self.preview.leadingAnchor),
+				view.topAnchor.constraint(equalTo: self.preview.safeAreaLayoutGuide.topAnchor),
+				view.trailingAnchor.constraint(equalTo: self.preview.trailingAnchor),
+				view.bottomAnchor.constraint(equalTo: self.preview.bottomAnchor),
 			])
 		}
 

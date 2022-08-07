@@ -86,15 +86,15 @@ public extension ColorAsset.Color {
 public struct ImageAsset {
   public fileprivate(set) var name: String
 
-  public init(name: String) {
-    self.name = name
-  }
-
   #if os(macOS)
   public typealias Image = NSImage
   #elseif os(iOS) || os(tvOS) || os(watchOS)
   public typealias Image = UIImage
   #endif
+
+  public init(name: String) {
+    self.name = name
+  }
 
   @available(iOS 8.0, tvOS 9.0, watchOS 2.0, macOS 10.7, *)
   public var image: Image {

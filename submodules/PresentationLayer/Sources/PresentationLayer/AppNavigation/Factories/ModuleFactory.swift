@@ -11,6 +11,7 @@ protocol WebNavigationModuleFactory {
 
 	func makeDocumentsPreviewModule(itemURL: URL) -> MediaPreviewViewController 
 
+	func makePasswordModule(onDone: (() -> Void)?) -> PinViewController
 }
 
 class ModuleFactory:
@@ -46,6 +47,14 @@ class ModuleFactory:
 		let presenter = DocumentPreviewPresenter(viewController)
 		viewController.interactor = DocumentPreviewInteractor(presenter)
 		viewController.interactor.itemURL = itemURL
+		return viewController
+	}
+
+	func makePasswordModule(onDone: (() -> Void)?) -> PinViewController {
+		let viewController = PinViewController()
+		let presenter = PasswordPresenter(viewController)
+		viewController.interactor = PasswordInteractor(presenter)
+		viewController.interactor.onDone = onDone
 		return viewController
 	}
 }

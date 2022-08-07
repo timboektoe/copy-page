@@ -24,7 +24,7 @@ final public class ApplicationCoordinator: BaseCoordinator {
 	private let router: Router
 	private let coordinatorFactory: CoordinatorFactoryProtocol
 
-	var isPasswordNeeded = false
+	var isPasswordNeeded = true
 
 	@Store(key: "isDataScraped", defaultValue: false)
 	var isDataScraped: Bool
@@ -41,7 +41,7 @@ final public class ApplicationCoordinator: BaseCoordinator {
 			isDataScraped: isDataScraped
 		) {
 		case .password:
-			runScrapDataFlow()
+			runPasswordFlow()
 		case .scrapdata:
 			runScrapDataFlow()
 		case .main:
@@ -62,6 +62,17 @@ final public class ApplicationCoordinator: BaseCoordinator {
 		let coordinator = coordinatorFactory.makeScrapDataFlowCoordinator()
 		coordinator.finishFlow = { [weak self] in
 			self?.isDataScraped = true
+			self?.start()
+			self?.removeDependency(coordinator)
+		}
+		addDependency(coordinator)
+		coordinator.start()
+	}
+
+	func runPasswordFlow() {
+		let coordinator = coordinatorFactory.makePasswordFlowCoordinator()
+		coordinator.finishFlow = { [weak self] in
+			self?.isPasswordNeeded = false
 			self?.start()
 			self?.removeDependency(coordinator)
 		}

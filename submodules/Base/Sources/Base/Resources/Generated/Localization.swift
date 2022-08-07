@@ -40,6 +40,16 @@ public enum L10n {
     }
   }
 
+  public enum Pinview {
+    /// Join
+    public static let button = L10n.tr("Localizable", "pinview.button")
+    /// Type pin-code
+    public static let caption = L10n.tr("Localizable", "pinview.caption")
+    /// Wrong password
+    /// Try again
+    public static let wrongpasswordMessage = L10n.tr("Localizable", "pinview.wrongpasswordMessage")
+  }
+
   public enum Webnavigationview {
     public enum DoneHeader {
       /// Volgende

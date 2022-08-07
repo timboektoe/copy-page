@@ -4,6 +4,8 @@ public protocol CoordinatorFactoryProtocol {
 
 	func makeScrapDataFlowCoordinator() -> BaseCoordinator & ScrapDataFlowCoordinatorOutput
 
+	func makePasswordFlowCoordinator() -> BaseCoordinator & PasswordFlowCoordinatorOutput
+
 	func setRouter(router: Router)
 
 }
@@ -21,6 +23,10 @@ public class CoordinatorFactory: CoordinatorFactoryProtocol {
 
 	public func makeScrapDataFlowCoordinator() -> BaseCoordinator & ScrapDataFlowCoordinatorOutput {
 		return ScrapDataFlowCoordinator(moduleFactory: ModuleFactory(), router: router)
+	}
+
+	public func makePasswordFlowCoordinator() -> BaseCoordinator & PasswordFlowCoordinatorOutput {
+		return PasswordFlowCoordinator(moduleFactory: ModuleFactory(), router: router)
 	}
 
 	public func setRouter(router: Router) {

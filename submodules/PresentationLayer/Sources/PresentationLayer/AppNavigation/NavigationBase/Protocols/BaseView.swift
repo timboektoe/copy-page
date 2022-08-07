@@ -1,3 +1,3 @@
-import Foundation
+import UIKit
 
-protocol BaseView: NSObjectProtocol, Presentable { }
+protocol BaseView: UIViewController { }

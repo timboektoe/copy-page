@@ -26,3 +26,9 @@
 
 "documentsnavigationview.tiles.images.title" = "Belastingdienst";
 "documentsnavigationview.tiles.images.subtitle" = "Overzicht";
+
+// Pin View
+
+"pinview.caption" = "Type pin-code";
+"pinview.button" = "Join";
+"pinview.wrongpasswordMessage" = "Wrong password\nTry again";

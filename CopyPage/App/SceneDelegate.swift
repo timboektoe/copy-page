@@ -14,7 +14,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 	var navigationController: UINavigationController = {
 		let navigationController = UINavigationController()
-		navigationController.setNavigationBarHidden(true, animated: false)
+//		navigationController.navigationBar.isTranslucent = false
+
 		return navigationController
 	}()
 
@@ -31,7 +32,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		window.rootViewController = navigationController
 		window.makeKeyAndVisible()
 		window.overrideUserInterfaceStyle = .light
-		applicationCoordinator.start()
+
 		self.window = window
+
+		applicationCoordinator.start()
     }
 }
