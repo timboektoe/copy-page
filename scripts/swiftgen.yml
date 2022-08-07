@@ -1,16 +1,16 @@
 strings:
-  inputs: ../CopyPage/Resources/Localization/Base.lproj
+  inputs: ../submodules/Base/Sources/Base/Resources/Localization/Base.lproj
   outputs:
     - templateName: structured-swift5
-      output: ../CopyPage/Resources/Generated/Localization.swift
+      output: ../submodules/Base/Sources/Base/Resources/Generated/Localization.swift
       params:
         publicAccess: public
 
 
 xcassets:
-  inputs: ../CopyPage/Resources/Assets/Assets.xcassets
+  inputs: ../submodules/Base/Sources/Base/Resources/Assets/Assets.xcassets
   outputs:
     - templateName: swift5
-      output: ../CopyPage/Resources/Generated/Images.swift
+      output: ../submodules/Base/Sources/Base/Resources/Generated/Images.swift
       params:
         publicAccess: public
