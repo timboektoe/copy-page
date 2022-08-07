@@ -22,6 +22,12 @@ public class ScrapDataWebNavigationViewController: UIViewController, ScrapDataWe
 		contentView.header = HeaderFactory().makeWebNavigationHeader()
 
 		// MARK: - Handdle background
+//		NotificationCenter.default.addObserver(self, selector: #selector(movedFromBackground), name: UIApplication.didBecomeActiveNotification, object: nil)
+
+	}
+
+	public override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
 
 		NotificationCenter.default.addObserver(self, selector: #selector(movedFromBackground), name: UIApplication.didBecomeActiveNotification, object: nil)
 	}

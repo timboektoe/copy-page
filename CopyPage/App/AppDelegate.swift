@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import BusinessLogicLayer
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

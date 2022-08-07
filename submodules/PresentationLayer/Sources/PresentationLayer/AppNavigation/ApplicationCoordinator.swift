@@ -24,7 +24,7 @@ final public class ApplicationCoordinator: BaseCoordinator {
 	private let router: Router
 	private let coordinatorFactory: CoordinatorFactoryProtocol
 
-	var isPasswordNeeded = true
+	var isPasswordNeeded = false
 
 	@Store(key: "isDataScraped", defaultValue: false)
 	var isDataScraped: Bool

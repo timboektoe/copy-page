@@ -39,17 +39,6 @@ public class WebItemsRepository: WebItemsRepositoryProtocol {
 				}
 			}
 		}
-
-		getServerConfiguration { result in
-			switch result {
-			case .success(let configuration):
-				completion(.success(self.readWebModels().filter {
-					configuration.sources.contains($0.source)
-				}))
-			case .failure(let error):
-				completion(.failure(error))
-			}
-		}
 	}
 
 	private func getEnabledWebSites(for config: ServerConfigurationModel) -> WebSite {

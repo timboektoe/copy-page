@@ -25,7 +25,8 @@ class ScrapDataWebNavigationInteractor: ScrapDataWebNavigationInteractorProtocol
 			switch result {
 			case .success(let cells):
 				Task {
-					let cellsUiModels = cells.compactMap {  item in
+
+					var cellsUiModels = cells.compactMap {  item in
 						return WebListCellUiModel(
 							image: ImageAsset(name: item.imageName).image,
 							title: item.name,
@@ -33,6 +34,11 @@ class ScrapDataWebNavigationInteractor: ScrapDataWebNavigationInteractorProtocol
 							url: item.url
 						)
 					}
+
+					if cellsUiModels.filter(\.isChecked).count + 1 == cellsUiModels.count,
+					   let index = cellsUiModels.firstIndex(where: { return $0.isChecked == false }) {
+						   cellsUiModels[index].url = self.buildURLForLastElement(stringURL: cellsUiModels[index].url)
+					   }
 
 					presenter?.updateDataSource(with: cellsUiModels)
 
@@ -47,5 +53,15 @@ class ScrapDataWebNavigationInteractor: ScrapDataWebNavigationInteractorProtocol
 				return
 			}
 		}
+	}
+
+	private func buildURLForLastElement(stringURL: String) -> String {
+		guard var url = URLComponents(string: stringURL) else {
+			return ""
+		}
+
+		url.queryItems?.append(URLQueryItem(name: "isLast", value: "true"))
+
+		return url.url?.absoluteString ?? ""
 	}
 }

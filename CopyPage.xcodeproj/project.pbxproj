@@ -14,6 +14,7 @@
 		0D94002128994CC8008AA7B9 /* sample.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D94002028994CC8008AA7B9 /* sample.png */; };
 		0D94004A289BEBA2008AA7B9 /* PresentationLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 0D940049289BEBA2008AA7B9 /* PresentationLayer */; };
 		0D94004F289C063D008AA7B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D94004E289C063D008AA7B9 /* Assets.xcassets */; };
+		0D94005928A07706008AA7B9 /* iwize-nl.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D94005828A07706008AA7B9 /* iwize-nl.json */; };
 		1C098AED14D93CBF241E429D /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 1C098273488DD62674AFA731 /* .gitignore */; };
 		223D6C6B2882EC0D00C4368E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223D6C6A2882EC0D00C4368E /* AppDelegate.swift */; };
 		223D6C752882EC0D00C4368E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223D6C742882EC0D00C4368E /* SceneDelegate.swift */; };
@@ -84,6 +85,7 @@
 		0D94004B289BEC15008AA7B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Base; path = submodules/Base; sourceTree = "<group>"; };
 		0D94004D289BEC94008AA7B9 /* BusinessLogicLayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = BusinessLogicLayer; path = submodules/BusinessLogicLayer; sourceTree = "<group>"; };
 		0D94004E289C063D008AA7B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0D94005828A07706008AA7B9 /* iwize-nl.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "iwize-nl.json"; sourceTree = "<group>"; };
 		1C098273488DD62674AFA731 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
 		223D6C672882EC0D00C4368E /* CopyPage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CopyPage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		223D6C6A2882EC0D00C4368E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 		223D6C6C2882EC0D00C4368E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0D94005828A07706008AA7B9 /* iwize-nl.json */,
 				0D94002028994CC8008AA7B9 /* sample.png */,
 				0D94001E28994BBF008AA7B9 /* sample.pdf */,
 				223D6C7F2882EC0E00C4368E /* Info.plist */,
@@ -410,6 +413,7 @@
 			files = (
 				0D86A0AE288EF08600498CDB /* webmodels.json in Resources */,
 				223D6C7A2882EC0D00C4368E /* LaunchScreen.storyboard in Resources */,
+				0D94005928A07706008AA7B9 /* iwize-nl.json in Resources */,
 				1C098AED14D93CBF241E429D /* .gitignore in Resources */,
 				0D94001F28994BBF008AA7B9 /* sample.pdf in Resources */,
 				0D94004F289C063D008AA7B9 /* Assets.xcassets in Resources */,
