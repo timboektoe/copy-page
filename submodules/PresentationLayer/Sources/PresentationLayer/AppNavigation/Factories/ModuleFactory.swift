@@ -1,7 +1,8 @@
 import Foundation
 import BusinessLogicLayer
+import UIKit
 
-protocol WebNavigationModuleFactory {
+protocol MainFlowModuleFactory {
 
 	func makeWebNavigationModule(onDone: (() -> Void)?) -> ScrapDataWebNavigationViewController
 
@@ -14,8 +15,45 @@ protocol WebNavigationModuleFactory {
 	func makePasswordModule(onDone: (() -> Void)?) -> PinViewController
 }
 
+protocol SettingsFlowModuleFactory {
+
+	func makeRootSettingsViewController(onReset: (() -> Void)?) -> RootSettingsViewController
+}
+
+protocol TabBarModuleFactory {
+	func makeTabBarModule(
+		viewDidLoad: @escaping (UINavigationController) -> (),
+		onItemFlowSelect: @escaping (UINavigationController) -> (),
+		onSettingsFlowSelect: @escaping (UINavigationController) -> ()
+	) -> TabbarController
+}
+
 class ModuleFactory:
-	WebNavigationModuleFactory {
+	MainFlowModuleFactory,
+	SettingsFlowModuleFactory,
+	TabBarModuleFactory {
+
+	func makeRootSettingsViewController(onReset: (() -> Void)?) -> RootSettingsViewController {
+		let viewController = RootSettingsViewController()
+		let presenter = RootSettingsPresenter(viewController)
+		let interactor = RootSettingsInteractor(presenter)
+		interactor.onReset = onReset
+		viewController.interactor = interactor
+		return viewController
+	}
+
+	func makeTabBarModule(
+		viewDidLoad: @escaping (UINavigationController) -> Void,
+		onItemFlowSelect: @escaping (UINavigationController) -> (),
+		onSettingsFlowSelect: @escaping (UINavigationController) -> ()
+	) -> TabbarController {
+		let tabBarController = TabbarController()
+		tabBarController.onViewDidLoad = viewDidLoad
+		tabBarController.onItemFlowSelect = onItemFlowSelect
+		tabBarController.onSettingsFlowSelect = onSettingsFlowSelect
+		return tabBarController
+	}
+
 
 	func makeDocumentsModule(onSelect: @escaping (URL) -> Void) -> DocumentsViewController {
 		let viewController = DocumentsViewController()

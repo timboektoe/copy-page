@@ -9,7 +9,7 @@ class MainFlowCoordinator: BaseCoordinator, MainFlowCoordinatorOutput {
 
 	var finishFlow: (() -> Void)?
 
-	private let moduleFactory: WebNavigationModuleFactory
+	private let moduleFactory: MainFlowModuleFactory
 	private let router: Router
 
 	internal init(moduleFactory: ModuleFactory, router: Router) {
@@ -35,59 +35,5 @@ class MainFlowCoordinator: BaseCoordinator, MainFlowCoordinatorOutput {
 	func showDocumentPreview(for url: URL) {
 		let previewModule = moduleFactory.makeDocumentsPreviewModule(itemURL: url)
 		router.push(previewModule)
-	}
-}
-
-public protocol ScrapDataFlowCoordinatorOutput: AnyObject {
-	var finishFlow: (() -> Void)? { get set }
-}
-
-class ScrapDataFlowCoordinator: BaseCoordinator, ScrapDataFlowCoordinatorOutput {
-
-	var finishFlow: (() -> Void)?
-
-	private let moduleFactory: WebNavigationModuleFactory
-	private let router: Router
-
-	internal init(moduleFactory: ModuleFactory, router: Router) {
-		self.moduleFactory = moduleFactory
-		self.router = router
-	}
-
-	override func start() {
-		showMakeWebNavigationModule()
-	}
-
-	func showMakeWebNavigationModule() {
-		let scrapDataNavigationModule = moduleFactory.makeWebNavigationModule(onDone: finishFlow)
-		router.setRootModule(scrapDataNavigationModule, hideBar: true)
-	}
-}
-
-public protocol PasswordFlowCoordinatorOutput: AnyObject {
-	var finishFlow: (() -> Void)? { get set }
-}
-
-class PasswordFlowCoordinator: BaseCoordinator, PasswordFlowCoordinatorOutput {
-
-	var finishFlow: (() -> Void)?
-
-	private let moduleFactory: WebNavigationModuleFactory
-	private let router: Router
-
-	internal init(moduleFactory: WebNavigationModuleFactory, router: Router) {
-		self.moduleFactory = moduleFactory
-		self.router = router
-	}
-
-	override func start() {
-		showPasswordModule()
-	}
-
-	func showPasswordModule() {
-		let module = moduleFactory.makePasswordModule(onDone: {
-			self.finishFlow?()
-		})
-		router.setRootModule(module, hideBar: true)
 	}
 }

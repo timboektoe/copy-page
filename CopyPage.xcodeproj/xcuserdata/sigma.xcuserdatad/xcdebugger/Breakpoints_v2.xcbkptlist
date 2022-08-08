@@ -71,22 +71,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8D607F65-8C60-433F-A513-CAEE6400D9A7"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "submodules/PresentationLayer/Sources/PresentationLayer/AppNavigation/Coordinators/MainFlowCoordinator.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "showPasswordModule()"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "1F165B91-95FB-4130-8D87-B059F61D0F3F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -161,6 +145,22 @@
             startingLineNumber = "41"
             endingLineNumber = "41"
             landmarkName = "get()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C65BB145-2651-4CDF-82FC-ED3B2954498F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "submodules/PresentationLayer/Sources/PresentationLayer/SettingsFlow/RootSettings/RootSettingsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "didSelectCell(at:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

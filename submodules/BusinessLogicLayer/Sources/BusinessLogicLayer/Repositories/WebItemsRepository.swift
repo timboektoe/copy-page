@@ -6,6 +6,7 @@ enum WebItemsRepositoryErrors: LocalizedError {
 
 public protocol WebItemsRepositoryProtocol {
 	func getWebModels(completion: @escaping (Result<WebSite, Error>) -> Void)
+	func readWebModels() -> WebSite
 }
 
 public class WebItemsRepository: WebItemsRepositoryProtocol {
@@ -47,7 +48,7 @@ public class WebItemsRepository: WebItemsRepositoryProtocol {
 		}
 	}
 
-	private func readWebModels() -> WebSite {
+	public func readWebModels() -> WebSite {
 		guard let url = Bundle.main.url(forResource: "webmodels", withExtension: "json") else {
 			fatalError("Cant find url")
 		}

@@ -50,9 +50,12 @@ final public class ApplicationCoordinator: BaseCoordinator {
 	}
 
 	func runMainFlow() {
-		let coordinator = coordinatorFactory.makeMainFlowCoordinator()
-		coordinator.finishFlow = { [weak self] in
+		var coordinator = coordinatorFactory.makeTabbarCoordinator()
+		coordinator.onReset = { [weak self] in
 			self?.removeDependency(coordinator)
+			self?.isDataScraped = false
+			self?.isPasswordNeeded = true
+			self?.start()
 		}
 		addDependency(coordinator)
 		coordinator.start()
