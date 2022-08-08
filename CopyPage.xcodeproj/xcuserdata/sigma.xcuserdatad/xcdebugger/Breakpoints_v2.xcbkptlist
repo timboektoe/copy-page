@@ -87,16 +87,80 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C7B9AE3E-8E4A-480F-9FC3-A70CDEF0C00D"
+            uuid = "1F165B91-95FB-4130-8D87-B059F61D0F3F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "submodules/PresentationLayer/Sources/PresentationLayer/MainFlow/ScrapDataWebNavigation/VIPModule/ScrapDataWebNavigationViewController.swift"
+            filePath = "submodules/BusinessLogicLayer/Sources/BusinessLogicLayer/Repositories/File.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "movedFromBackground()"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "get()"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "1F165B91-95FB-4130-8D87-B059F61D0F3F - 7831a354e32c9899"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BusinessLogicLayer.PDFFromBase64Provider.get() -&gt; __C.PDFDocument"
+                  moduleName = "CopyPage"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sigma/Documents/copy-page/submodules/BusinessLogicLayer/Sources/BusinessLogicLayer/Repositories/File.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  uuid = "1F165B91-95FB-4130-8D87-B059F61D0F3F - 7831a354e32c9899"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BusinessLogicLayer.PDFFromBase64Provider.get() -&gt; __C.PDFDocument"
+                  moduleName = "CopyPage"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sigma/Documents/copy-page/submodules/BusinessLogicLayer/Sources/BusinessLogicLayer/Repositories/File.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "148">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "621A49D5-1A21-40A5-BBF9-D9B188AA3583"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "submodules/BusinessLogicLayer/Sources/BusinessLogicLayer/Repositories/File.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "get()"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F875E7BB-6742-44CB-8C5D-A4F08074FCF9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "submodules/BusinessLogicLayer/Sources/BusinessLogicLayer/Repositories/PDFFromBase64Provider.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "get()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

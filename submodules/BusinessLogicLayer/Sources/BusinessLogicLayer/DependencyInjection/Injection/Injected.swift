@@ -20,3 +20,13 @@ public extension InjectedValues {
 	}
 }
 
+public struct PDFFromBase64ProviderKey: InjectionKey {
+	static public var currentValue: PDFFromBase64ProviderProtocol = PDFFromBase64Provider()
+}
+
+public extension InjectedValues {
+	var pDFromBase64ProviderKey: PDFFromBase64ProviderProtocol {
+		get { Self[PDFFromBase64ProviderKey.self] }
+		set { Self[PDFFromBase64ProviderKey.self] = newValue }
+	}
+}
