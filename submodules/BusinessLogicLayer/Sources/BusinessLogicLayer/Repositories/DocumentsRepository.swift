@@ -1,11 +1,5 @@
-//
-//  DocumentsRepository.swift
-//  CopyPage
-//
-//  Created by Maksym Svitlovskyi on 02.08.2022.
-//
-
-import Foundation
+import UIKit
+import QuickLookThumbnailing
 
 enum DocumentRepositoryError: LocalizedError {
 	case unknownError
@@ -13,7 +7,7 @@ enum DocumentRepositoryError: LocalizedError {
 
 public protocol DocumentsRepositoryProtocol {
 
-	func get(completion: (Result<[DocumentModel], Error>) -> Void)
+	func get(completion: @escaping (Result<[DocumentModel], Error>) -> Void)
 
 }
 
@@ -21,6 +15,7 @@ public struct DocumentModel {
 	public var id: UUID
 	public var name: String
 	public var url: URL
+	public var preview: UIImage
 }
 
 
@@ -36,7 +31,7 @@ public class DocumentsRepository: DocumentsRepositoryProtocol {
 		self.type = type
 	}
 
-	public func get(completion: (Result<[DocumentModel], Error>) -> Void) {
+	public func get(completion: @escaping (Result<[DocumentModel], Error>) -> Void) {
 
 		let name = "sample"
 		var format: String
@@ -55,13 +50,33 @@ public class DocumentsRepository: DocumentsRepositoryProtocol {
 			return
 		}
 
-		completion(.success(
-			[
-				.init(id: .init(), name: name, url: url),
-				.init(id: .init(), name: "\(name)-1", url: url),
-				.init(id: .init(), name: "\(name)-2", url: url),
-				.init(id: .init(), name: "\(name)-3", url: url)
-			]
-		))
+		generateThumbnail(for: url, completion: { image in
+			completion(.success(
+				[
+					.init(id: .init(), name: name, url: url, preview: image),
+					.init(id: .init(), name: "\(name)-1", url: url, preview: image),
+					.init(id: .init(), name: "\(name)-2", url: url, preview: image),
+					.init(id: .init(), name: "\(name)-3", url: url, preview: image)
+				]
+			))
+		})
+	}
+
+	public func generateThumbnail(for url: URL, completion: @escaping (UIImage) -> Void) {
+
+		let size: CGSize = CGSize(width: 60, height: 60)
+
+		let request = QLThumbnailGenerator.Request(fileAt: url, size: size, scale: 1, representationTypes: .all)
+
+		let generator = QLThumbnailGenerator.shared
+		generator.generateRepresentations(for: request) { (thumbnail, type, error) in
+
+			if let image = thumbnail?.uiImage {
+				completion(image)
+			}
+
+			completion(UIImage())
+
+		}
 	}
 }

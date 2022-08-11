@@ -20,6 +20,6 @@ class SettingsFlowCoordinator: BaseCoordinator, SettingsFlowCoordinatorOutput {
 
 	func showSettingsRootModule() {
 		let module = moduleFactory.makeRootSettingsViewController(onReset: onReset)
-		router.setRootModule(module, hideBar: true)
+		router.setRootModule(module, hideBar: false)
 	}
 }

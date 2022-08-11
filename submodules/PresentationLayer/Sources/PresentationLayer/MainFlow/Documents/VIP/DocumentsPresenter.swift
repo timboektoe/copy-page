@@ -13,14 +13,18 @@ class DocumentsPresenter: DocumentsPresenterProtocol {
 		case main
 	}
 
-	lazy var dataSource = configureDataSource()
-
+	lazy var dataSource: UITableViewDiffableDataSource<DocumentsSection, DocumentCellUiModel> = {
+		DispatchQueue.main.sync {
+			return configureDataSource()
+		}
+	}()
 	var view: DocumentsViewProtocol
 
 	var onSelect: ((URL) -> Void)?
 
 	required init(_ view: DocumentsViewProtocol) {
 		self.view = view
+		view.contentView.content.tableView.register(DocumentsCellView.self, forCellReuseIdentifier: cellIdentifier)
 	}
 
 	func updateDataSource(with cells: [DocumentCellUiModel]) {
@@ -32,16 +36,15 @@ class DocumentsPresenter: DocumentsPresenterProtocol {
 
 	let cellIdentifier = "documentCell"
 	func configureDataSource() -> UITableViewDiffableDataSource<DocumentsSection, DocumentCellUiModel> {
-		view.contentView.content.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
 		return UITableViewDiffableDataSource(
 			tableView: view.contentView.content.tableView,
 			cellProvider: { tableView, indexPath, uiModel in
 				let cell = tableView.dequeueReusableCell(
-					withIdentifier: "documentCell",
+					withIdentifier: self.cellIdentifier,
 					for: indexPath
-				) as UITableViewCell
+				) as? DocumentsCellView
 
-				cell.textLabel?.text = uiModel.name
+				cell?.configure(with: uiModel)
 				return cell
 			}
 		)
