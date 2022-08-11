@@ -1,19 +1,19 @@
-let didIt = false;
-
-const doIt = () => {
-    if (!didIt && document.location.href.startsWith('https://acct-stubs.aqopi.com/stub.html') ) {
-        browser.runtime.sendMessage(JSON.stringify({"request": "check", "url": window.location.href})).then((response) => {
-			console.log("Hi content js:")
-            console.log(response);
-			/// redirect after send message to background
-//            window.location.href = 'https://example.com/' // response.url
-        });
-        didIt = true;
-    }
-}
-
-document.addEventListener('DOMContentLoaded', doIt, false);
-doIt();
+// let didIt = false;
+//
+// const doIt = () => {
+//     if (!didIt && document.location.href.startsWith('https://acct-stubs.aqopi.com/stub.html') ) {
+//         browser.runtime.sendMessage(JSON.stringify({"request": "check", "url": window.location.href})).then((response) => {
+// 			console.log("Hi content js:")
+//             console.log(response);
+// 			/// redirect after send message to background
+// //            window.location.href = 'https://example.com/' // response.url
+//         });
+//         didIt = true;
+//     }
+// }
+//
+// document.addEventListener('DOMContentLoaded', doIt, false);
+// doIt();
 
 // 1. We open some page form the app
 // UIApplication.shared.openURL()
@@ -24,15 +24,21 @@ doIt();
 // 5. bg.js invoke some function in content.js\
 
 
-/*
-document.addEventListener('DOMContentLoaded', () => {
+console.log('content script loaded');
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('1');
 	if (document.location.href.startsWith('https://acct-stubs.aqopi.com/stub.html') ) {
 		const urlParams = new URLSearchParams(window.location.search);
 		const source = urlParams.get('source') || null;
 
+        console.log('2');
+
 		if (source) {
+            console.log('3');
 			browser.runtime.sendMessage(JSON.stringify({
-				source: source,
+				source: source,  // 'moh' 'uwv'
 				status: 'done'
 			}));
 
@@ -43,5 +49,3 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 }, false);
-
- */

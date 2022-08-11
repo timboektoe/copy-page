@@ -29,6 +29,7 @@
 		0D86A0BB288F362300498CDB /* WebNavigationCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D86A0BA288F362300498CDB /* WebNavigationCellView.swift */; };
 		0D86A0BD288FE82F00498CDB /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D86A0BC288FE82F00498CDB /* UserDefaultsManager.swift */; };
 		0D86A0BF28901E9F00498CDB /* WebNavigationPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D86A0BE28901E9F00498CDB /* WebNavigationPromptView.swift */; };
+		1C0988917B167E4368693FCA /* content-utils.js in Sources */ = {isa = PBXBuildFile; fileRef = 1C0982F8A65C78327AA26EFD /* content-utils.js */; };
 		1C098AED14D93CBF241E429D /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 1C098273488DD62674AFA731 /* .gitignore */; };
 		223D6C6B2882EC0D00C4368E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223D6C6A2882EC0D00C4368E /* AppDelegate.swift */; };
 		223D6C6F2882EC0D00C4368E /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 223D6C6D2882EC0D00C4368E /* Main.html */; };
@@ -119,6 +120,7 @@
 		0D86A0BC288FE82F00498CDB /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		0D86A0BE28901E9F00498CDB /* WebNavigationPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebNavigationPromptView.swift; sourceTree = "<group>"; };
 		1C098273488DD62674AFA731 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
+		1C0982F8A65C78327AA26EFD /* content-utils.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "content-utils.js"; sourceTree = "<group>"; };
 		223D6C672882EC0D00C4368E /* CopyPage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CopyPage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		223D6C6A2882EC0D00C4368E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		223D6C6E2882EC0D00C4368E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = ../Base.lproj/Main.html; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 		0D86A08628883B7200498CDB /* App */ = {
 			isa = PBXGroup;
 			children = (
+				223D6C7B2882EC0D00C4368E /* Main.storyboard */,
 				223D6C6A2882EC0D00C4368E /* AppDelegate.swift */,
 				223D6C742882EC0D00C4368E /* SceneDelegate.swift */,
 			);
@@ -376,7 +379,6 @@
 				0D86A08D288853F000498CDB /* CopyPage.entitlements */,
 				0D86A08628883B7200498CDB /* App */,
 				223D6C782882EC0D00C4368E /* LaunchScreen.storyboard */,
-				223D6C7B2882EC0D00C4368E /* Main.storyboard */,
 				223D6C6C2882EC0D00C4368E /* Resources */,
 			);
 			path = CopyPage;
@@ -434,6 +436,7 @@
 				223D6CAC2882EC0E00C4368E /* popup.html */,
 				223D6CAE2882EC0E00C4368E /* popup.css */,
 				223D6CB02882EC0E00C4368E /* popup.js */,
+				1C0982F8A65C78327AA26EFD /* content-utils.js */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -661,6 +664,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				223D6CA02882EC0E00C4368E /* SafariWebExtensionHandler.swift in Sources */,
+				1C0988917B167E4368693FCA /* content-utils.js in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

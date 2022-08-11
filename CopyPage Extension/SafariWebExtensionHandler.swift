@@ -13,6 +13,11 @@ struct MessageModel: Codable {
 	let url: String
 }
 
+struct MessageModel2: Codable {
+	let source: String
+	let status: String
+}
+
 enum ExtensionMessageProcessingErros: LocalizedError {
 	case noMessage
 	case noMessageData
@@ -53,28 +58,32 @@ class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
 				return
 			}
 
-			let result = try JSONDecoder().decode(MessageModel.self, from: messageData)
+			let result = try JSONDecoder().decode(MessageModel2.self, from: messageData)
 
-			guard let url = URL(string: result.url) else {
-				saveError(error: .cantCreateURL)
-				return
-			}
+//			guard let url = URL(string: result.url) else {
+//				saveError(error: .cantCreateURL)
+//				return
+//			}
+//
+//			guard let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
+//				saveError(error: .cantCreateComponents)
+//				return
+//			}
+//
+//			let sourceQuery = urlComponents.queryItems?.first {
+//				$0.name == "source"
+//			}
+//
+//			guard let sourceQueryValue = sourceQuery?.value else {
+//				saveError(error: .noSourceQuery)
+//				return
+//			}
 
-			guard let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
-				saveError(error: .cantCreateComponents)
-				return
-			}
+			let src = result.source
 
-			let sourceQuery = urlComponents.queryItems?.first {
-				$0.name == "source"
-			}
+            groupUserDefaults.set(true, forKey: src)
 
-			guard let sourceQueryValue = sourceQuery?.value else {
-				saveError(error: .noSourceQuery)
-				return
-			}
 
-			groupUserDefaults.set(true, forKey: sourceQueryValue)
 
 		} catch {
 			saveError(error: .cantDecodeMessage)
