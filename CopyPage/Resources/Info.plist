@@ -15,6 +15,8 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLIconFile</key>
+			<string></string>
 			<key>CFBundleURLName</key>
 			<string>com.copypage.overview</string>
 			<key>CFBundleURLSchemes</key>
