@@ -37,4 +37,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 		applicationCoordinator.start()
     }
+
+	func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+			print("open from url contexts")
+
+			if let url = URLContexts.first?.url {
+				let urlString = url.absoluteString
+				let compontnt = urlString.components(separatedBy: "://")
+
+				print(compontnt)
+
+				if let last = compontnt.last {
+					print("Linked")
+					applicationCoordinator.start(with: DeepLinkOption.build(last: compontnt.last!))
+				}
+			}
+	}
 }
