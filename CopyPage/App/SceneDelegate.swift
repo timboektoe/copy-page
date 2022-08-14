@@ -10,7 +10,7 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
-    var window: UIWindow?
+	var window: UIWindow?
 
 	var navigationController: UINavigationController = {
 		let navigationController = UINavigationController()
@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		coordinatorFactory: CoordinatorFactory()
 	)
 
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+	func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 		guard let windowScene = (scene as? UIWindowScene) else { return }
 		let window = UIWindow(windowScene: windowScene)
 		window.rootViewController = navigationController
@@ -33,32 +33,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 		self.window = window
 
-		if let connectionOptionURL = connectionOptions.urlContexts.first?.url {
-			let components = connectionOptionURL.absoluteString.components(separatedBy: "://")
-
-			if let last = components.last {
-				applicationCoordinator.start(with: DeepLinkOption.build(last: last))
-			} else {
-				applicationCoordinator.start()
-			}
+		if connectionOptions.urlContexts.first != nil {
+			self.run(with: connectionOptions.urlContexts)
 		} else {
 			applicationCoordinator.start()
 		}
-    }
+	}
 
-	func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-			print("open from url contexts")
+	func run(with context: Set<UIOpenURLContext>) {
+		if let url = context.first?.url {
+			let urlString = url.absoluteString
+			let compontnt = urlString.components(separatedBy: "://")
 
-			if let url = URLContexts.first?.url {
-				let urlString = url.absoluteString
-				let compontnt = urlString.components(separatedBy: "://")
-
-				print(compontnt)
-
-				if let last = compontnt.last {
-					print("Linked")
-					applicationCoordinator.start(with: DeepLinkOption.build(last: last))
-				}
+			if let last = compontnt.last {
+				applicationCoordinator.start(with: DeepLinkOption.build(last: last))
 			}
+		}
 	}
 }
