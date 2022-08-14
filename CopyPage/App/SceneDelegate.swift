@@ -25,9 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 	)
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-
 		guard let windowScene = (scene as? UIWindowScene) else { return }
-
 		let window = UIWindow(windowScene: windowScene)
 		window.rootViewController = navigationController
 		window.makeKeyAndVisible()
@@ -35,7 +33,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 		self.window = window
 
-		applicationCoordinator.start()
+		if let connectionOptionURL = connectionOptions.urlContexts.first?.url {
+			let components = connectionOptionURL.absoluteString.components(separatedBy: "://")
+
+			if let last = components.last {
+				applicationCoordinator.start(with: DeepLinkOption.build(last: last))
+			} else {
+				applicationCoordinator.start()
+			}
+		} else {
+			applicationCoordinator.start()
+		}
     }
 
 	func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -49,7 +57,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 				if let last = compontnt.last {
 					print("Linked")
-					applicationCoordinator.start(with: DeepLinkOption.build(last: compontnt.last!))
+					applicationCoordinator.start(with: DeepLinkOption.build(last: last))
 				}
 			}
 	}
