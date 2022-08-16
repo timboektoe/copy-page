@@ -37,5 +37,11 @@
         }
     },
 
-    "permissions": ["nativeMessaging"]
+    "permissions": ["nativeMessaging"],
+    "externally_connectable": {
+        "matches": [
+            "*://localhost/*",
+            "https://*.iwize.nl/*"
+        ]
+    }
 }
