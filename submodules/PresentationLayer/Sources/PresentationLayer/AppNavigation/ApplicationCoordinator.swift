@@ -49,6 +49,16 @@ final public class ApplicationCoordinator: BaseCoordinator {
 		}
 	}
 
+	override public func start(with option: DeepLinkOption?) {
+		if let option = option {
+			switch option {
+			case .webnavigation: runScrapDataFlow()
+			}
+		} else {
+			start()
+		}
+	}
+
 	func runMainFlow() {
 		var coordinator = coordinatorFactory.makeTabbarCoordinator()
 		coordinator.onReset = { [weak self] in

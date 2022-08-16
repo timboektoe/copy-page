@@ -10,7 +10,7 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
-    var window: UIWindow?
+	var window: UIWindow?
 
 	var navigationController: UINavigationController = {
 		let navigationController = UINavigationController()
@@ -24,10 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		coordinatorFactory: CoordinatorFactory()
 	)
 
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-
+	func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 		guard let windowScene = (scene as? UIWindowScene) else { return }
-
 		let window = UIWindow(windowScene: windowScene)
 		window.rootViewController = navigationController
 		window.makeKeyAndVisible()
@@ -35,6 +33,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 		self.window = window
 
-		applicationCoordinator.start()
-    }
+		if connectionOptions.urlContexts.first != nil {
+			self.run(with: connectionOptions.urlContexts)
+		} else {
+			applicationCoordinator.start()
+		}
+	}
+
+	func run(with context: Set<UIOpenURLContext>) {
+		if let url = context.first?.url {
+			let urlString = url.absoluteString
+			let compontnt = urlString.components(separatedBy: "://")
+
+			if let last = compontnt.last {
+				applicationCoordinator.start(with: DeepLinkOption.build(last: last))
+			}
+		}
+	}
 }

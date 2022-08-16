@@ -55,6 +55,7 @@ class ModuleFactory:
 	}
 
 
+	@MainActor
 	func makeDocumentsModule(onSelect: @escaping (URL) -> Void) -> DocumentsViewController {
 		let viewController = DocumentsViewController()
 		let presenter = DocumentsPresenter(viewController)

@@ -19,9 +19,9 @@ class DocumentsInteractor: DocumentsInteractorProtocol {
 			switch result {
 			case .success(let documents):
 				let uiModel: [DocumentCellUiModel] = documents.map { document in
-					return .init(id: .init(), name: document.name, image: Asset.pdfIcon.image, url: document.url)
+					return .init(id: .init(), name: document.name, image: document.preview, url: document.url)
 				}
-				presenter.updateDataSource(with: uiModel)
+				self.presenter.updateDataSource(with: uiModel)
 			case .failure(_):
 				return
 			}

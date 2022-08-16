@@ -165,13 +165,6 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		0D86A09A288EADCB00498CDB /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Domain;
-			sourceTree = "<group>";
-		};
 		0D86A0C0289025D200498CDB /* Test */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,7 +211,6 @@
 			isa = PBXGroup;
 			children = (
 				0D86A0C0289025D200498CDB /* Test */,
-				0D86A09A288EADCB00498CDB /* Domain */,
 				0D86A08D288853F000498CDB /* CopyPage.entitlements */,
 				0D86A08628883B7200498CDB /* App */,
 				223D6C782882EC0D00C4368E /* LaunchScreen.storyboard */,
