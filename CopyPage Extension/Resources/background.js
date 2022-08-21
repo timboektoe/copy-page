@@ -32,7 +32,7 @@ browser.runtime.onMessageExternal.addListener(function(message, sender, sendResp
             // See https://iwize.nl/gd-app-integration/assets/document-collection.json for an example json
             browser.runtime.sendNativeMessage("application.id", {
                 type: 'report-data-assembled',
-                data: message.data
+                documents: message.documents
             });
             sendResponse({ status: 'succes' });
             break;
