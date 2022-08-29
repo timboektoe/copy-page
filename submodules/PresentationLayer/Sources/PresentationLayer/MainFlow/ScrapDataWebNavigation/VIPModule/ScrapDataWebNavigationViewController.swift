@@ -4,7 +4,7 @@ import UIKit
 
 public class ScrapDataWebNavigationViewController: UIViewController, ScrapDataWebNavigationViewProtocol {
 
-	var interactor: ScrapDataWebNavigationInteractor!
+	var interactor: ScrapDataWebNavigationInteractorProtocol!
 
 	@UseAutoLayout var contentView = FormView<WebNavigationView, HeaderView>()
 
@@ -15,8 +15,6 @@ public class ScrapDataWebNavigationViewController: UIViewController, ScrapDataWe
 	public override func viewDidLoad() {
 		super.viewDidLoad()
 
-		interactor.loadCells()
-
 		setupView()
 
 		contentView.header = HeaderFactory().makeWebNavigationHeader()
@@ -24,10 +22,29 @@ public class ScrapDataWebNavigationViewController: UIViewController, ScrapDataWe
 		// MARK: - Handdle background
 		NotificationCenter.default.addObserver(self, selector: #selector(movedFromBackground), name: UIApplication.didBecomeActiveNotification, object: nil)
 
+//		PKHUD.sharedHUD.contentView = PKHUDProgressView()
+//		PKHUD.sharedHUD.show()
+//		error()
+		
+	}
+
+	public override func viewDidAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+
+		interactor.loadCells { error in
+//			PKHUD.sharedHUD.hide(false)
+			if let error = error {
+				self.presentAlert(title: "Error", message: error.localizedDescription)
+			}
+		}
 	}
 
 	@objc func movedFromBackground() {
-		interactor.loadCells()
+		interactor.loadCells { error in
+			if let error = error {
+				self.presentAlert(title: "Error", message: error.localizedDescription)
+			}
+		}
 	}
 
 	func setupView() {

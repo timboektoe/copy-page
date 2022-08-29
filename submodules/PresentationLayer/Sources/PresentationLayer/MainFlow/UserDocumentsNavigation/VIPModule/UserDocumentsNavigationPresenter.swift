@@ -20,7 +20,10 @@ class UserDocumentsNavigationPresenter: UserDocumentsNavigationPresenterProtocol
 		view.contentView.header = HeaderFactory().documentsNavigationViewHeader()
 	}
 
-	func setupCells(_ cells: [UserDocumentsCellUiModel]) {
-		view.contentView.content.configure(cellsUiModels: cells)
+	func setupCells(_ result: Result<[UserDocumentsCellUiModel], Error>) {
+		switch result {
+		case .success(let cells): view.contentView.content.configure(cellsUiModels: cells)
+		case .failure(let error): view.showErrorView(subtitle: error.localizedDescription)
+		}
 	}
 }

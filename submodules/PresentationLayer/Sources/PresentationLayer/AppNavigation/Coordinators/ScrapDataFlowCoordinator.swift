@@ -1,3 +1,5 @@
+import BusinessLogicLayer
+
 public protocol ScrapDataFlowCoordinatorOutput: AnyObject {
 	var finishFlow: (() -> Void)? { get set }
 }
@@ -19,7 +21,9 @@ class ScrapDataFlowCoordinator: BaseCoordinator, ScrapDataFlowCoordinatorOutput 
 	}
 
 	func showMakeWebNavigationModule() {
-		let scrapDataNavigationModule = moduleFactory.makeWebNavigationModule(onDone: finishFlow)
+		let scrapDataNavigationModule = moduleFactory.makeWebNavigationModule(onDone: {
+			self.finishFlow?()
+		})
 		router.setRootModule(scrapDataNavigationModule, hideBar: true)
 	}
 }

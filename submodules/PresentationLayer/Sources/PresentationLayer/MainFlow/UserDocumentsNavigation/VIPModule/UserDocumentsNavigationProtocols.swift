@@ -1,8 +1,8 @@
-import Foundation
 import Base
 import BusinessLogicLayer
+import UIKit
 
-protocol UserDocumentsNavigationViewProtocol {
+protocol UserDocumentsNavigationViewProtocol: UIViewController {
 	var contentView: FormView<UserDocumentsView, HeaderView> { get }
 }
 
@@ -12,13 +12,13 @@ protocol UserDocumentsNavigationPresenterProtocol: AnyObject {
 
 	func setupHeader()
 
-	func setupCells(_ cells: [UserDocumentsCellUiModel]) 
+	func setupCells(_ result: Result<[UserDocumentsCellUiModel], Error>) 
 
 }
 
 protocol UserDocumentsNavigationInteractorProtocol {
 
-	var onSelect: ((DocumentsRepository.DocumentType) -> Void)? { get set }
+	var onSelect: ((URL) -> Void)? { get set }
 
 	init(_ presenter: UserDocumentsNavigationPresenterProtocol)
 

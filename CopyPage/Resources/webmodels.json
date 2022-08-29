@@ -2,31 +2,31 @@
 	{
 		"name": "MijnOverheid",
 		"imageName": "heraldicLogo",
-		"url": "https://iwize.nl/gd-app-integration/index.html?source=moh",
+		"url": "https://iwize.nl/gd-app-integration/collect.html?source=moh",
 		"source": "moh"
 	},
 	{
 		"name": "Belastingdienst",
 		"imageName": "heraldicLogo",
-		"url": "https://iwize.nl/gd-app-integration/index.html?source=mbd",
+		"url": "https://iwize.nl/gd-app-integration/collect.html?source=mbd",
 		"source": "mbd"
 	},
 	{
 		"name": "MijnPensioen",
 		"imageName": "mpo-logo",
-		"url": "https://iwize.nl/gd-app-integration/index.html?source=mpo",
+		"url": "https://iwize.nl/gd-app-integration/collect.html?source=mpo",
 		"source": "mpo"
 	},
 	{
 		"name": "Mijn UWV",
 		"imageName": "logo-uwv",
-		"url": "https://iwize.nl/gd-app-integration/index.html?source=uwv",
+		"url": "https://iwize.nl/gd-app-integration/collect.html?source=uwv",
 		"source": "uwv"
 	},
 	{
 		"name": "Bankrekeningen",
 		"imageName": "bank",
-		"url": "https://iwize.nl/gd-app-integration/index.html?source=duo",
+		"url": "https://iwize.nl/gd-app-integration/collect.html?source=duo",
 		"source": "duo"
 	}
 ]

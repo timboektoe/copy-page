@@ -33,3 +33,7 @@
 "pinview.button" = "Join";
 "pinview.wrongpasswordMessage" = "Wrong password\nTry again";
 
+// Errors
+
+"error.defaulttitle" = "Error";
+"error.defaultButtonTitle" = "OK";

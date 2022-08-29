@@ -6,7 +6,7 @@ protocol MainFlowModuleFactory {
 
 	func makeWebNavigationModule(onDone: (() -> Void)?) -> ScrapDataWebNavigationViewController
 
-	func makeUserDocumentsNavigationModule(onSelect: ((DocumentsRepository.DocumentType) -> Void)?) -> UserDocumentsViewController
+	func makeUserDocumentsNavigationModule(onSelect: ((URL) -> Void)?) -> UserDocumentsViewController
 
 	func makeDocumentsModule(onSelect: @escaping (URL) -> Void) -> DocumentsViewController
 
@@ -73,7 +73,7 @@ class ModuleFactory:
 	}
 
 
-	func makeUserDocumentsNavigationModule(onSelect: ((DocumentsRepository.DocumentType) -> Void)?) -> UserDocumentsViewController {
+	func makeUserDocumentsNavigationModule(onSelect: ((URL) -> Void)?) -> UserDocumentsViewController {
 		let viewController = UserDocumentsViewController()
 		let presenter = UserDocumentsNavigationPresenter(viewController)
 		viewController.interactor = UserDocumentsNavigationInteractor(presenter)

@@ -124,6 +124,5 @@ class HomeViewController: UIViewController {
 
 	@objc func updateResponse() {
 		responseTextView.text = groupUserDefaults?.string(forKey: "test") ?? "User Defaults is empty"
-		debugPrint(responseTextView.text ?? "")
 	}
 }

@@ -40,6 +40,13 @@ public enum L10n {
     }
   }
 
+  public enum Error {
+    /// OK
+    public static let defaultButtonTitle = L10n.tr("Localizable", "error.defaultButtonTitle")
+    /// Error
+    public static let defaulttitle = L10n.tr("Localizable", "error.defaulttitle")
+  }
+
   public enum Pinview {
     /// Join
     public static let button = L10n.tr("Localizable", "pinview.button")

@@ -20,7 +20,7 @@ class ScrapDataWebNavigationInteractor: ScrapDataWebNavigationInteractorProtocol
 	}
 
 	@MainActor
-	func loadCells() {
+	func loadCells(completion: @escaping (Error?) -> Void) {
 		webitemsRepository.getWebModels { [weak presenter] result in
 			switch result {
 			case .success(let cells):
@@ -38,23 +38,33 @@ class ScrapDataWebNavigationInteractor: ScrapDataWebNavigationInteractorProtocol
 					if cellsUiModels.filter(\.isChecked).count + 1 == cellsUiModels.count,
 					   let index = cellsUiModels.firstIndex(where: { return $0.isChecked == false }) {
 						   cellsUiModels[index].url = self.buildURLForLastElement(stringURL: cellsUiModels[index].url)
-					   }
+					}
 
 					presenter?.updateDataSource(with: cellsUiModels)
 
-					if cellsUiModels.allSatisfy(\.isChecked) {
-						if let onDone = self.onDone {
-							presenter?.change(header: .done(action: onDone))
-						}
-					}
-				}
+					if cellsUiModels.allSatisfy(\.isChecked),
+					   let onDone = self.onDone {
 
-			case .failure(let error):
-				return
+						presenter?.change(
+							header: .done(
+								action: {
+									if let error = WebMessageProcessService().processDocuments() {
+										completion(error)
+										return
+									}
+									onDone()
+								}
+							)
+						)
+					}
+					
+					completion(nil)
+				}
+			case .failure(let error): completion(error)
 			}
 		}
 	}
-
+	
 	private func buildURLForLastElement(stringURL: String) -> String {
 		guard var url = URLComponents(string: stringURL) else {
 			return ""

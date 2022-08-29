@@ -22,7 +22,7 @@ class MainFlowCoordinator: BaseCoordinator, MainFlowCoordinatorOutput {
 	}
 
 	func showDocumentsNavigationModule() {
-		let documentsNavigationModule = moduleFactory.makeUserDocumentsNavigationModule(onSelect: showDocumentsModule)
+		let documentsNavigationModule = moduleFactory.makeUserDocumentsNavigationModule(onSelect: showDocumentPreview(for:))
 		router.setRootModule(documentsNavigationModule, hideBar: true)
 	}
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D22757828B53D8900D3C59D /* BusinessLogicLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 0D22757728B53D8900D3C59D /* BusinessLogicLayer */; };
 		0D86A08A28883B9F00498CDB /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D86A08928883B9F00498CDB /* PermissionViewController.swift */; };
 		0D86A08C2888453D00498CDB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D86A08B2888453D00498CDB /* HomeViewController.swift */; };
 		0D86A0AE288EF08600498CDB /* webmodels.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D86A0A0288EB1A300498CDB /* webmodels.json */; };
@@ -140,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D22757828B53D8900D3C59D /* BusinessLogicLayer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +352,9 @@
 			dependencies = (
 			);
 			name = "CopyPage Extension";
+			packageProductDependencies = (
+				0D22757728B53D8900D3C59D /* BusinessLogicLayer */,
+			);
 			productName = "CopyPage Extension";
 			productReference = 223D6C9A2882EC0E00C4368E /* CopyPage Extension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -901,6 +906,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0D22757728B53D8900D3C59D /* BusinessLogicLayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BusinessLogicLayer;
+		};
 		0D940049289BEBA2008AA7B9 /* PresentationLayer */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = PresentationLayer;

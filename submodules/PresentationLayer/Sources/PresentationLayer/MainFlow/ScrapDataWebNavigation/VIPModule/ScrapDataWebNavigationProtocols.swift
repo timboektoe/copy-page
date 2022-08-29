@@ -1,6 +1,7 @@
 import BusinessLogicLayer
 import Base
 import Foundation
+import UIKit
 
 protocol ScrapDataWebNavigationViewProtocol {
 	var contentView: FormView<WebNavigationView, HeaderView> { get }
@@ -22,6 +23,8 @@ protocol ScrapDataWebNavigationInteractorProtocol {
 	init(_ presenter: ScrapDataWebNavigationPresenterProtocol)
 
 	func didSelectCell(at indexPath: IndexPath)
-	func loadCells()
+	func loadCells(completion: @escaping (Error?) -> Void)
 
 }
+
+

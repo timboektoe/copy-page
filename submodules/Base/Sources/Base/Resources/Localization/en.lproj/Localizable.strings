@@ -32,3 +32,8 @@
 "pinview.caption" = "Type pin-code";
 "pinview.button" = "Join";
 "pinview.wrongpasswordMessage" = "Wrong password\nTry again";
+
+// Errors
+
+"error.defaulttitle" = "Error";
+"error.defaultButtonTitle" = "OK";
