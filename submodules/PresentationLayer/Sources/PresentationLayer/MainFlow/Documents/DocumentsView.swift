@@ -12,6 +12,7 @@ class DocumentsView: UIView {
 
 		setupLayout()
 
+		
 	}
 
 	required init?(coder: NSCoder) {

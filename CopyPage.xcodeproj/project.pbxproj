@@ -712,7 +712,7 @@
 				DEVELOPMENT_TEAM = 7H2WM3JK95;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CopyPage/Resources/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = CopyPage;
+				INFOPLIST_KEY_CFBundleDisplayName = Infolia;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -752,7 +752,7 @@
 				DEVELOPMENT_TEAM = 7H2WM3JK95;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CopyPage/Resources/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = CopyPage;
+				INFOPLIST_KEY_CFBundleDisplayName = Infolia;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
